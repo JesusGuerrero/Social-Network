@@ -1,0 +1,25 @@
+<% if current_user.admin? %>
+	<h1>Activate Linking Project</h1>
+<% else %>
+	<h1>Edit Linking Project</h1>
+<% end %>
+<% if current_user.admin? %>
+	<h3>Instructions</h3>
+	<ol>
+		<li>Go into Basecamp and create the project name.  A sample project could be the client name, followed by their project name, and the appropriate package.  For example: "Joseph O'Day - LinkNetworker - Package #2"</li>
+		<li>Refresh this page to update the "Basecamp Project" drop-down box</li>
+		<li>Select the appropriate project</li>
+		<li>Select the writer for the writing tasks</li>
+		<li>Select the linker for the linking tasks</li>
+		<li>Click "Activate"</li>
+	</ol>
+	<p>This will connect all of the client info between Basecamp and our members area.  You'll then proceed to creating the tasks.</p>
+
+	<h3>Project</h3>
+	<div><strong>Client: </strong><%=h @project.user.name %></div>
+<% end %>
+
+<% form_for(@project) do |f| %>
+	<%= render 'project_form', :f => f %>
+	<%= f.submit "Update" %>
+<% end %>

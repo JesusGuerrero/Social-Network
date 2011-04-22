@@ -1,0 +1,2 @@
+module BasecampHelper
+end

@@ -1,0 +1,8 @@
+<h1>Edit My Keyword/URL</h1>
+
+<% form_for(@keyword) do |f| %>
+  <%= render "keyword_form", :f => f %>
+  <%= f.submit "Update" %>
+<% end %>
+
+<br /><%= link_to "My Profile", profile_path %>

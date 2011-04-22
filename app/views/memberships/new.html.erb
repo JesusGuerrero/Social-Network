@@ -1,0 +1,9 @@
+<h1>Add Network</h1>
+<% form_for @membership, :url => memberships_path do |f| %>
+  <%= f.error_messages %>
+  <%= f.label :network_id %><br />
+  <%= f.select :network_id %><br />
+  <br />
+  <%= f.submit "Add Network" %>&nbsp;&nbsp;&nbsp;
+<% end %>
+

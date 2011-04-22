@@ -1,0 +1,2 @@
+class UserAssociationController < ApplicationController
+end

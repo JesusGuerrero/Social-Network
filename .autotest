@@ -1,0 +1,3 @@
+Autotest.add_hook :initialize do |autotest| autotest.add_mapping(/ˆspec\/integration\/.*_spec\.rb$/) do
+autotest.files_matching(/ˆspec\/integration\/.*_spec\.rb$/) end
+end

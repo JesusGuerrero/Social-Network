@@ -1,0 +1,10 @@
+<h1>Add New Linking Project</h1>
+<p>Select Up to # Keyword/URL combos for linking</p>
+
+<% form_for(@project) do |f| %>
+
+<%= render 'project_form', :f => f %>
+
+<%= f.submit "Add" %>
+
+<% end %>

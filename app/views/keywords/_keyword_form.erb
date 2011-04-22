@@ -1,0 +1,14 @@
+<%= f.error_messages %>
+<p>
+	<%= f.label :keyphrase %><br />
+	<%= f.text_field :keyphrase %>
+</p>
+<p>
+	<%= f.label :description %><br />
+	<%= f.text_area :description, :rows => 3 %>
+</p>
+<% if current_user.level >= 2 %>
+<% f.fields_for :content do |builder| %>
+	<%= render 'content_form', :f => builder %>
+<% end %>
+<% end %>

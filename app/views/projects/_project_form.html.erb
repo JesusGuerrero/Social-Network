@@ -1,0 +1,59 @@
+<%= f.error_messages %>
+<p>
+	<%= f.label :name, "Project Name" %><br />
+	<%= f.text_field :name %>
+</p>
+<% if current_user.admin? %>
+	<div><strong>Active?: </strong>
+	<%= select( "project", "active", { "Yes" => "true", "No" => "False"}) %>
+	</div>
+	<div><strong>Basecamp Project: </strong>
+		<% if @bc_projects.nil? %>
+			!!! Problem with Basecamp connection !!!
+		<% else %>
+			<%= select("project", :basecamp_id, @bc_projects.map {|u| [u.name,u.id]}, options = {:prompt => "-Select a project"}) %>
+		<% end %>	
+	</div>
+	<div><strong>Writer: </strong>
+		<% if @bc_people.nil? %>
+			!!! Problem with Basecamp connection !!!
+		<% else %>
+			<%= select("project", :writer_id, @bc_people.map {|u| [u.first_name,u.id]}, options = {:prompt => "-Select a worker"}) %>
+		<% end %>
+	</div>
+	<div><strong>Linker: </strong>
+		<% if @bc_people.nil? %>
+			!!! Problem with Basecamp connection !!!
+		<% else %>
+			<%= select("project", :linker_id, @bc_people.map {|u| [u.first_name,u.id]}, options = {:prompt => "-Select a worker"}) %>
+		<% end %>
+	</div>
+<% end %>
+	<p>
+		<%= f.label :description %><br />
+		<%= f.text_area :description %>
+	</p>
+	<h4 class="item bold">Keyword</h4>
+	<h4 class="description bold">URL</h4>
+
+<% unless @keywords.nil? %>
+	<% @keywords.each do |keyword| %>
+		<% unless keyword.content.nil? %>
+		<div class="item">
+		<%= check_box_tag "project[keywords][]", keyword.id, @project.keywords.include?(keyword), :id => "project_keywords_#{keyword.id}" %>
+		<%= h keyword.keyphrase %>
+		</div>
+		<div class="description"><%= h keyword.content.link_url %></div>
+		<div class="clear"></div>
+		<% end %>
+	<% end %>
+<% else %>
+	<p>No Keyword/URL combinations!  Add more keywords, or add content links to your existing keywords</p>
+<% end %>
+
+<% if current_user.admin? %>
+<p>
+	<%= f.label :notes, "Notes:" %><br />
+	<%= f.text_area :notes %>
+</p>
+<% end %>

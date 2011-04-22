@@ -1,0 +1,28 @@
+# == Schema Information
+# Schema version: 20101106235748
+#
+# Table name: tutorials
+#
+#  id         :integer         primary key
+#  name       :string(255)
+#  category   :string(255)
+#  permalink  :string(255)
+#  content    :text
+#  created_at :timestamp
+#  updated_at :timestamp
+#  page_order :integer
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  category: MyString
+  permalink: MyString
+  content: MyText
+
+two:
+  name: MyString
+  category: MyString
+  permalink: MyString
+  content: MyText

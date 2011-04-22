@@ -1,0 +1,11 @@
+<h1>Editing tutorial</h1>
+
+<% form_for(@tutorial) do |f| %>
+  <%= render 'fields', :f => f %>
+  <div class="actions">
+    <%= f.submit "Update page" %>
+  </div>
+<% end %>
+
+<%= link_to 'Show', @tutorial %> |
+<%= link_to 'Back', tutorials_path %>

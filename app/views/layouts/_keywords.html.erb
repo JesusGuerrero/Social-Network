@@ -1,0 +1,48 @@
+<% if @user.level < 1 %>
+<div class="tutorial_block round inactive_block">
+	<div class="menu round inactive"><h2>Step 2: Keyword Research</h2></div>
+<% elsif @user.level == 1 %>
+<div class="tutorial_block round active_block">
+	<div class="menu round active"><h2>Step 2: Keyword Research</h2></div>
+<% else %>
+<div class="tutorial_block round complete_block">
+	<div class="menu round complete"><h2>Step 2: Keyword Research</h2></div>
+<% end %>
+	<div class="tutorial_desc">
+	<% if @user.level < 1 %>
+		<strong>Status:</strong> Must Complete Website Module
+	<% elsif @user.level == 1 %>
+		<strong>Status:</strong> Ready
+	<% else %>
+		<strong>Status:</strong> Complete
+	<% end %>
+		<p><strong>What You'll Learn:</strong> This set of tutorials shows you everything you need to do to get your website ready for linking. It goes over</p>
+		<ul>
+			<li>Basic Keyword Research</li>
+			<li>Assessing the Level of Competition</li>
+			<li>How To Find Keyword Ideas</li>
+		</ul>
+	<% if @user.last_tutorial < 10 %>
+		<span class="floatright">Complete Website Module First</span><br />
+	<% elsif @user.last_tutorial == 10 %>
+		<%= link_to "▶ Start Keyword Research Tutorials", keyword_start_path, :class => "floatright" %><br />
+	<% elsif @user.last_tutorial < 15 %>
+		<%= link_to "▶ Continue Keyword Research Tutorials", tutorial_path(@user.last_tutorial), :class => "floatright" %><br />
+	<% else %>
+		<%= link_to "▶ Review Keyword Research Tutorials", keyword_start_path, :class => "floatright" %><br />
+	<% end %>
+	<% unless @user.keywords.empty? %>		
+		<div class="panel">
+        	<h3>My Keywords</h3>
+			<h4 class="item bold">Keyphrase</h4>
+			<h4 class="description bold">Description</h4>
+			<div class="keywords">
+				<%= render @keywords %>
+			</div>
+			<%= link_to "Add More Keywords", new_keyword_path %><br />
+		</div>
+		<div class="panelBtn openBtn"><a href="#" title="open">▼ Open My Keywords</a></div>
+		<div class="panelBtn closeBtn" style="display: none;"><a href="#" title="close">▲ Close My Keywords</a></div>
+		<% end %>
+	</div> <!-- tutorial_desc -->
+</div>

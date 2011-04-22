@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title><%= title %></title>
+	<%= render 'layouts/stylesheets' %>
+	<%= javascript_include_tag 'jquery', 'application' %>
+  </head>
+  <body>
+		<% if @user = current_user %>
+			<%= render( 'users/controls') %>
+		<% end %>
+		<div class="container" class="round">
+			<%= render 'layouts/header' %>
+	    <div id="content" class="round">
+				<div id="menu">
+					<%= render 'users/user_info' %>
+					<%= render 'users/resources' %>
+				</div>
+				<div id="body">
+					<% flash.each do |key, value| %>
+			    	<%= content_tag(:div, value, :class => "flash #{key}" ) %>
+					<% end %>
+					<%= yield %>
+				</div>
+				<div style="clear:both"></div>
+    	</div>
+			<div style="clear:both"></div>
+			<%= render 'layouts/footer' %>
+			<%= debug(params) if Rails.env.development? %>
+		</div>	
+  </body>
+</html>

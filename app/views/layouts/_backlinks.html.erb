@@ -1,0 +1,62 @@
+<% if @user.level < 3 %>
+<div class="tutorial_block round inactive_block">
+	<div class="menu round inactive"><h2>Step 4: Getting Backlinks</h2></div>
+<% elsif @user.level == 3 %>
+<div class="tutorial_block round active_block">
+	<div class="menu round active"><h2>Step 4: Getting Backlinks</h2></div>
+<% else %>
+<div class="tutorial_block round complete_block">
+<div class="menu round complete"><h2>Step 4: Getting Backlinks</h2></div>
+<% end %>
+	<div class="tutorial_desc">
+	<% if @user.level < 3 %>
+		<strong>Status:</strong> Must Complete Content Module
+	<% elsif @user.level == 3 %>
+		<strong>Status:</strong> Ready
+	<% else %>
+		<strong>Status:</strong> Complete
+	<% end %>
+	<p><strong>What You'll Learn:</strong> This set of tutorials shows you everything you need to do to get started with your linking campaign. It goes over</p>
+	<ul>
+		<li>How To Get Your Content Ranked in Google</li>
+		<li>How Backlinking Works</li>
+	</ul>
+	<% if @user.last_tutorial < 20 %>
+		<span class="floatright">Complete Content Module First</span><br />
+	<% elsif @user.last_tutorial == 20 %>
+		<%= link_to "▶ Start Backlinking Tutorials", linking_start_path, :class => "floatright" %><br />
+	<% elsif @user.last_tutorial < 23 %>
+		<%= link_to "▶ Continue Backlinking Tutorials", tutorial_path(@user.last_tutorial), :class => "floatright" %><br />
+	<% else %>
+		<%= link_to "▶ Review Backlinking Tutorials", linking_start_path, :class => "floatright" %><br />
+	<% end %>
+	<% if @user.buyer %>
+	<div class="panel">
+       	<h3>My Linking Projects</h3>
+		<h4 class="item bold">Project Name</h4>
+		<h4 class="description bold">Keywords</h4>
+		<div class="contents">
+			<% @projects.each do |project| %>
+				<div class="user_item">
+					<div class="item">
+						<%= h project.name %><br />
+						<%= link_to 'View', project %>&nbsp;|
+						<%= link_to 'Edit', edit_project_path(project) %>&nbsp;|
+						<%= link_to 'Delete', project, :confirm => 'Are you sure?', :method => :delete %>
+					</div>
+					<div class="description">
+						<% project.keywords.each do |keyword| %>
+						<%= h keyword.keyphrase%><br />
+						<% end %>
+					</div>
+					<div class="clear"></div>
+				</div>
+			<% end %>
+		</div>
+		<%= link_to "Add New Project", new_project_path %><br />
+	</div>
+	<div class="panelBtn openBtn"><a href="#" title="open">▼ Open My Linking Projects</a></div>
+	<div class="panelBtn closeBtn" style="display: none;"><a href="#" title="close">▲ Close My Linking Projects</a></div>
+	<% end %>
+	</div>
+</div>

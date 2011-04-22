@@ -1,0 +1,24 @@
+# == Schema Information
+# Schema version: 20101106235748
+#
+# Table name: websites
+#
+#  id          :integer         primary key
+#  domain      :string(255)
+#  description :text
+#  user_id     :integer
+#  created_at  :timestamp
+#  updated_at  :timestamp
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  site: MyString
+  description: MyText
+  user_id: 1
+
+two:
+  site: MyString
+  description: MyText
+  user_id: 1

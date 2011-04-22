@@ -1,0 +1,22 @@
+Jesus Guerrero's Network<br/>
+<%
+ids = Array.new
+%>
+<%	@user.networks.each do |network2| 
+ ids.push network2.id
+		end %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+  </tr>
+<% @networks.each do |network| %>
+		<% unless ids.include?( network.id ) %>
+  <tr>
+    <td><%=h network.name  %></td>
+    <td><%=h network.description %></td>
+    <td><%= link_to 'Add', :controller => "users", :action => "add_network", :id => network.id %></td>
+  </tr>
+		<% end %>
+<% end %>
+</table>

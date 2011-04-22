@@ -1,0 +1,28 @@
+<h1>Listing Tutorials</h1>
+
+<table>
+  <tr>
+	<th>Order</th>
+    <th>Name</th>
+	<th>Category</th>
+    <th>Permalink</th>
+  </tr>
+
+<% @tutorials.each do |tutorial| %>
+  <tr>
+	<td><%=h tutorial.page_order %></td>
+    <td><%=h tutorial.name %></td>
+	<td><%=h tutorial.category %></td>
+    <td><%=h tutorial.permalink %></td>
+    <td><%= link_to 'Show', tutorial %></td>
+	<% if current_user.admin? %>
+    	<td><%= link_to 'Edit', edit_tutorial_path(tutorial) %></td>
+    	<td><%= link_to 'Delete', tutorial, :confirm => 'Are you sure?', :method => :delete %></td>
+	<% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New tutorial', new_tutorial_path %>

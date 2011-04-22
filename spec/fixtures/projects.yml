@@ -1,0 +1,25 @@
+# == Schema Information
+# Schema version: 20101106235748
+#
+# Table name: projects
+#
+#  id          :integer         not null, primary key
+#  active      :boolean
+#  user_id     :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#  name        :string(255)
+#  basecamp_id :integer         default(0)
+#  writer_id   :integer         default(0)
+#  linker_id   :integer         default(0)
+#  description :text
+#  notes       :text
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  active: false
+
+two:
+  active: false

@@ -1,0 +1,5 @@
+rails -v 2.3.8
+authlogic
+factory_girl
+RedCloth -v 4.2.2
+xml-simple

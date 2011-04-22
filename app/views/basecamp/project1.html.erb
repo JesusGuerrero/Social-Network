@@ -1,0 +1,33 @@
+<h1>Project #1 Task Creation</h1>
+
+<h3>Project Details</h3>
+<div><strong>ID: </strong><%= @bc_project.id %></div>
+<div><strong>Project Name: </strong><%= @bc_project.name %></div>
+<div><strong>Writer: </strong><%= @writer.first_name %></div>
+<div><strong>Linker: </strong><%= @linker.first_name %></div>
+<br/>
+<h3>Tasks</h3>
+<table>
+	<tr>
+	<th>Keyword</th>
+    <th>URL</th>
+	<th># of Articles</th>
+    <th># of Short Posts</th>
+	<th># of Web 2.0 profiles</th>
+  	</tr>
+<% @keywords.each_with_index do |keyword, i| %>
+<tr><td><%= h keyword.keyphrase %></td>
+<td><%= h keyword.content.link_url %></td>
+<td><%= @a_count[i] %></td>
+<td><%= @sp_count[i] %></td>
+<td><%= @wp_count[i] %></td></tr>
+<% end %>
+</table>
+<h3>Milestone</h3>
+<div><strong>Title: </strong><%= @ms.title %></div>
+<br/>
+<h3>Message</h3>
+<div><strong>Title: </strong><%= @msg.title %></div>
+<div><strong>Body: </strong><%=textilize @msg.body %></div>
+<div><strong>Errors: </strong><%= @msg.errors.full_messages %></div>
+<br/>

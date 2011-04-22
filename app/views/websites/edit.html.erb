@@ -1,0 +1,8 @@
+<h1>Edit My Website</h1>
+
+<% form_for(@website) do |f| %>
+  <%= render "website_form", :f => f %>
+  <%= f.submit "Update" %>
+<% end %>
+
+<br /><%= link_to "My Profile", profile_path %>

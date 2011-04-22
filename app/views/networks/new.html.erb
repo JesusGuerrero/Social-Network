@@ -1,0 +1,22 @@
+<h1>New network</h1>
+<div id="network_model">
+<% form_for(@network) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :height => "100", :width => "100%", :onkeyup => "charCount(  this, 'desc_counter', 255)", :onkeydown => "charCount( this, 'desc_counter', 255)" %>
+  </p>
+	<p id="n_counter">
+		Characters Remaining: <span id="desc_counter"/>255</span>
+	</p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+</div>
+<%= link_to 'Back', networks_path %>

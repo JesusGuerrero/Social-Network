@@ -1,0 +1,6 @@
+<h1>ShoppingCart#SendRequest</h1>
+<p>Attempting to send request</p>
+<%
+require 'socket'
+print TCPSocket.open("192.168.1.1", "daytime").read
+%>

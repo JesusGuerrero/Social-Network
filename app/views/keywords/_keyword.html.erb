@@ -1,0 +1,17 @@
+<div class="user_item">
+	<div class="item">
+		<%= h keyword.keyphrase %><br />
+		<%= link_to 'Edit', edit_keyword_path(keyword) %>&nbsp;|
+		<%= link_to 'Delete', keyword, :confirm => 'Are you sure?', :method => :delete %>
+		<% if @user.level >= 3 && keyword.content.nil? %>
+			&nbsp;|&nbsp;<%= link_to 'Add URL', edit_keyword_path(keyword.id) %>
+		<% end %>
+	</div>
+	<div class="description">
+		<%= h keyword.description %>
+		<% unless keyword.content.nil? %>
+		<br /><strong>URL: </strong><%= h keyword.content.link_url %>
+		<% end %>
+	</div>
+	<div class="clear"></div>
+</div>

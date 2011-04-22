@@ -1,0 +1,10 @@
+$("#complete_form").before('<div class="notice">Tutorial Completed!</div>');
+<% if current_user.level==0 %>
+	location.replace('<%= new_website_path %>');
+<% elsif current_user.level==1 %>
+	location.replace('<%= new_keyword_path %>');
+<% elsif current_user.level==2 %>
+	location.replace('<%= edit_keyword_path(current_user.keywords[0].id) %>');
+<% else %>
+	location.replace('<%= profile_path %>');
+<% end %>

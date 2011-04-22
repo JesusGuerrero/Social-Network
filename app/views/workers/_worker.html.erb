@@ -1,0 +1,5 @@
+	<li>
+	    <%= link_to h(worker.name), worker %>&nbsp;|
+		<%= link_to "Edit", edit_worker_path(worker) %>&nbsp;|
+		<%= link_to 'Delete', worker, :confirm => 'Are you sure?', :method => :delete %>
+	</li>

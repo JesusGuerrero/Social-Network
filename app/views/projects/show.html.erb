@@ -1,0 +1,49 @@
+<h1>My Linking Project</h1>
+
+<h3>Project Info</h3>
+<p><strong>Name: </strong><%=h @project.name %><br/>
+<strong>Status: </strong>
+<% if @project.active? %>
+	Active
+<% else %>
+	Inactive
+<% end %>
+<br/>
+<strong>Description: </strong><%=h @project.description %><br/></p>
+<h3>Keywords/URLs</h3>
+<table>
+<% @keywords.each do |keyword| %>
+<tr><td><%= h keyword.keyphrase %></td>
+<td><%= h keyword.content.link_url %></td></tr>
+<% end %>
+</table>
+
+<% unless @project.basecamp_id == nil %>
+<div>
+<h3>Progress</h3>
+<table>
+<%= completion_status(@project.basecamp_id) %>
+</table>
+</div>
+<% end %>
+
+<% if current_user.admin? %>
+<div id="admin">
+<h3>Admin Details</h3>
+<p>
+	<strong>Writer: </strong><%=h @writer.first_name %><br/>
+	<strong>Linker: </strong><%=h @linker.first_name %><br/>
+	<%= link_to "View in Basecamp", "https://linknetworker.basecamphq.com/projects/#{@project.basecamp_id}/" %><br/>
+	<strong>Notes: </strong><br/><%=h @project.notes %>
+</p>
+</div>
+<% end %>
+
+<%= link_to 'Edit', edit_project_path(@project) %>&nbsp;|
+<%= link_to 'Delete', @project, :confirm => 'Are you sure?', :method => :delete %><br/>
+
+<% if current_user.admin? %>
+<br /><%= link_to "Back to All Projects", projects_path %>
+<% else %>
+<br /><%= link_to "Back to My Profile", profile_path %>
+<% end %>

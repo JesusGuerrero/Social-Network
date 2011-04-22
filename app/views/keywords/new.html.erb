@@ -1,0 +1,6 @@
+<h1>Add New Keyword</h1>
+
+<% form_for(@keyword) do |f| %>
+  <%= render "keyword_form", :f => f %>
+  <%= f.submit "Add" %>
+<% end %>

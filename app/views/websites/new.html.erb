@@ -1,0 +1,6 @@
+<h1>Add New Website</h1>
+
+<% form_for(@website) do |f| %>
+  <%= render "website_form", :f => f %>
+  <%= f.submit "Add" %>
+<% end %>

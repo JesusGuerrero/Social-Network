@@ -1,0 +1,13 @@
+
+<% 	@members.each do |m|  %>
+		<div class="network-feed">
+			<div class="nf-title"><%=h m.name %></div>
+			<div class="nf-body">
+<% 		@mbrs = Network.find( m.id )
+			@usr = @mbrs.users
+			@usr.each do |n| %>
+			<p><%=h n.name %></p>
+<%		end %>
+	</div>
+</div>
+<% end %>

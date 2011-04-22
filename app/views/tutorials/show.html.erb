@@ -1,0 +1,26 @@
+<h1><%= h @tutorial.name %></h1>
+
+<%= textilize @tutorial.content %>
+
+<% if @tutorial.name =~ /complete/i %>
+ <% form_for current_user, :html => {:id => 'complete_form'} do |f| %>
+  <%= f.error_messages %>
+  <% if current_user.level == 0 %>
+  	<%= f.hidden_field :last_tutorial, :value => @tutorial.page_order + 1 %>
+  	<%= f.hidden_field :level, :value => current_user.level + 1 %>
+  <% end %>
+  <%= f.submit "Complete Tutorial" %>
+ <% end %>
+<% else %>
+ <% form_for current_user, :html => {:id => 'progress_form'} do |f| %>
+  <%= f.error_messages %>
+  <%= f.hidden_field :last_tutorial, :value => @tutorial.page_order + 1 %>
+  <%= f.submit "Next Tutorial" %>
+ <% end %>
+<% end %>
+
+<% if current_user.admin? %>
+<%= link_to 'Edit', edit_tutorial_path(@tutorial) %> |
+<%= link_to "Delete", @tutorial, :confirm => 'Are you sure?', :method => :delete %> |
+<%= link_to 'Back', tutorials_path %>
+<% end %>

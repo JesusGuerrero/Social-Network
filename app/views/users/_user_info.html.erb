@@ -1,0 +1,21 @@
+<div class="block">
+	<div id="mini-profile">
+		<div id="mini-profile-image">
+			<img src="" alt="A" />
+		</div>
+		<div id="mini-profile-actions">		
+			<strong></strong><br />
+			<%= link_to @user.name, root_path %><br />
+			San Jose, CA<br/>
+			United States
+		</div>
+		<div style="clear:both"></div>
+	</div>
+	<div class="block_body">
+		
+		<strong>Networks:</strong> <%= @user.networks.count %><%= link_to "Add Network", :controller => "memberships", :action => "new" %><br />
+		<strong>Images:</strong> <%= @user.keywords.count %><br />
+		<strong>Music:</strong> <%= @user.contents.count %><br />
+		<strong>Videos:</strong> <%= @user.contents.count %><br />
+	</div>
+</div> <!-- user_info -->

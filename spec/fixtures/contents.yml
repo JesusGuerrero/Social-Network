@@ -1,0 +1,21 @@
+# == Schema Information
+# Schema version: 20101106235748
+#
+# Table name: contents
+#
+#  id         :integer         primary key
+#  link_url   :string(255)
+#  keyword_id :integer
+#  created_at :timestamp
+#  updated_at :timestamp
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  url: MyString
+  keyword_id: 1
+
+two:
+  url: MyString
+  keyword_id: 1

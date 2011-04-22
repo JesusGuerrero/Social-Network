@@ -1,0 +1,5 @@
+Sorry, before you can sign in you need to confirm your email address.
+<br/>
+<br/>
+<%= link_to('Resend confirmation email', { :controller => "users", :action => "resend_activation", :id => user.id} ) %>
+<% #link_to('Resend confirmation email', resend_activation_users_path(:id => user.id) ) %>

@@ -1,0 +1,35 @@
+<div id="header" class="round">
+	<div id="title">
+<%	if current_user
+			logo_link = root_path
+		else
+			logo_link = signin_path
+		end
+%>			
+		<h1><%= link_to "Computer Enchiladas", logo_link %></h1>
+	</div>
+	<div id="myNavigation">
+		<% if current_user %>
+		<ul>
+			<li><%= link_to "Main", root_url %></li>
+			<li><%= link_to "My Page", root_url %></li>
+			<li><%= link_to "Friends", friends_path %></li>
+			<li><%= link_to "Settings", edit_user_path(current_user) %></li>		
+		</ul>
+		<% else %>
+		<ul id="require_no_user">
+     <li><%= link_to "Sign in", signin_path %></li>
+	   <li><%= link_to "Register", signup_path %></li>
+  	 <li><%= link_to "About Us", about_path %></li>
+		</ul>
+    <% end %>
+		<% if current_user && current_user.admin? %>		
+		<br/>
+		<ul>
+			<li><%= link_to "All Users", users_path %></li>
+			<li><%= link_to "Networks", networks_path %></li>
+  	</ul>
+		<% end %>
+	</div>
+	<div style="clear:both"></div>
+</div>

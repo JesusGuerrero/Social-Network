@@ -1,0 +1,25 @@
+<h1>Edit My Account</h1>
+
+<% form_for @user do |f| %>
+  <%= f.error_messages %>
+	<%= f.label :name %><br />	
+	<%= f.text_field :name %><br />
+	<br />
+	<%= f.label :email %><br />
+	<%= f.text_field :email %><br />
+	<br />
+	<%= f.label :password %><br />
+	<%= f.password_field :password %><br />
+	<br />
+	<%= f.label :password_confirmation %><br />
+	<%= f.password_field :password_confirmation %><br />
+	<br />
+  <%= f.submit "Update" %>
+<% end %>
+<br />
+<table>
+	<% @user.memberships.collect{|m| %>
+		<tr><td><%=m.network.name%></td><td><%= link_to "Remove", :action => "remove_network", :id => m.network_id %></td></tr>
+	<%  } %>
+</table>
+<br /><%= link_to "My Account", root_path %>

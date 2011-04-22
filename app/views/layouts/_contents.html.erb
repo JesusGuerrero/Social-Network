@@ -1,0 +1,51 @@
+<% if @user.level < 2 %>
+<div class="tutorial_block round inactive_block">
+	<div class="menu round inactive"><h2>Step 3: Creating Content</h2></div>
+<% elsif @user.level == 2 %>
+<div class="tutorial_block round active_block">
+	<div class="menu round active"><h2>Step 3: Creating Content</h2></div>
+<% else %>
+<div class="tutorial_block round complete_block">
+	<div class="menu round complete"><h2>Step 3: Creating Content</h2></div>
+<% end %>
+	<div class="tutorial_desc">
+	<% if @user.level < 2 %>
+		<strong>Status:</strong> Must Complete Keyword Module
+	<% elsif @user.level == 2 %>
+		<strong>Status:</strong> Ready
+	<% else %>
+		<strong>Status:</strong> Complete
+	<% end %>
+	<p><strong>What You'll Learn:</strong> This set of tutorials shows you everything you need to create the content for your linking. It goes over</p>
+	<ul>
+		<li>What You Should Write About</li>
+		<li>The Elements of a Good Piece of Content</li>
+		<li>How To Post Your Content on Your Site</li>
+		<li>How To Link Your Content Together</li>
+	</ul>
+	<% if @user.last_tutorial < 15 %>
+		<span class="floatright">Complete Keyword Module First</span><br />
+	<% elsif @user.last_tutorial == 15 %>
+		<%= link_to "▶ Start Creating Content Tutorials", content_start_path, :class => "floatright" %><br />
+	<% elsif @user.last_tutorial < 20 %>
+		<%= link_to "▶ Continue Creating Content Tutorials", tutorial_path(@user.last_tutorial), :class => "floatright" %><br />
+	<% else %>
+		<%= link_to "▶ Review Creating Content Tutorials", content_start_path, :class => "floatright" %><br />
+	<% end %>
+	<% unless @user.contents.empty? %>
+	<div class="panel">
+       	<h3>My Content URLs</h3>
+		<h4 class="item bold">URL</h4>
+		<h4 class="description bold">Corresponding Keyword</h4>
+		<div class="contents">
+			<% @keywords.each do |content| %>
+				<%= render 'content', :content => content %>
+			<% end %>
+		</div>
+		<%= link_to "Add More Keywords/URLs", new_keyword_path %><br />
+	</div>
+	<div class="panelBtn openBtn"><a href="#" title="open">▼ Open My URLs</a></div>
+	<div class="panelBtn closeBtn" style="display: none;"><a href="#" title="close">▲ Close My URLs</a></div>
+	<% end %>
+	</div> <!-- tutorial_desc -->
+</div>

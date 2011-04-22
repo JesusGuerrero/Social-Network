@@ -1,0 +1,8 @@
+<h3>My Networks</h3>
+	<% @user.memberships.collect{|m| %>
+		<div class="network-feed">
+			<div class="nf-title"><%=m.network.name%></div>
+			<div class="nf-body">No Messages</div>
+		</div>
+	<%  } %>
+

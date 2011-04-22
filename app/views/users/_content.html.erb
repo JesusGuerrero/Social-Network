@@ -1,0 +1,10 @@
+<% unless content.content.nil? %>
+<div class="user_item">
+	<div class="item">
+		<%= h content.content.link_url %><br />
+		<%= link_to 'Edit Keyword/URL', edit_keyword_path(content) %>
+	</div>
+	<div class="description"><%= h content.keyphrase %></div>
+	<div class="clear"></div>
+</div>
+<% end %>

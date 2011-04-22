@@ -1,0 +1,41 @@
+<% if @user.level == 0 %>
+	<div class="tutorial_block round active_block">
+		<div class="menu round active"><h2>Step 1: Setting Up Your Website</h2></div>
+<% else %>
+	<div class="tutorial_block round complete_block">
+		<div class="menu round complete"><h2>Step 1: Setting Up Your Website</h2></div>
+<% end %>
+	<div class="tutorial_desc">
+		<% if @user.level == 0 %>
+			<strong>Status:</strong> Ready
+		<% else %>
+			<strong>Status:</strong> Complete
+		<% end %>
+		<p><strong>What You'll Learn:</strong> This set of tutorials shows you everything you need to do to determine what keywords will result in the most sales in your target market. It goes over</p>
+		<ul>
+			<li>Domains &amp; Hosting</li>
+			<li>Wordpress Installation &amp; Setup</li>
+			<li>Capture Page Creation, Setup, &amp; Uploading To Your Site</li>
+		</ul>
+		<% if @user.last_tutorial == 0 %>
+			<%= link_to "▶ Start Website Setup Tutorials", website_start_url, :class => "floatright" %><br />
+		<% elsif @user.last_tutorial < 9 %>
+		 	<%= link_to "▶ Continue Website Setup Tutorials", tutorial_path(@user.last_tutorial), :class => "floatright" %><br />
+		<% else %>
+			<%= link_to "▶ Review Website Setup Tutorials", website_start_url, :class => "floatright" %><br />
+		<% end %>
+		<% unless @user.websites.empty? %>		
+		<div class="panel">
+        	<h3>My Websites</h3>
+			<h4 class="item bold">Domain</h4>
+			<h4 class="description bold">Description</h4>
+			<div class="websites">
+				<%= render @websites %>
+			</div>
+			<%= link_to "Add More Websites", new_website_path %><br />
+		</div>
+		<div class="panelBtn openBtn"><a href="#" title="open">▼ Open My Websites</a></div>
+		<div class="panelBtn closeBtn" style="display: none;"><a href="#" title="close">▲ Close My Websites</a></div>
+		<% end %>
+	</div>
+</div>

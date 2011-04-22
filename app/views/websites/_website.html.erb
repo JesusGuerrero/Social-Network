@@ -1,0 +1,9 @@
+<div class="user_item">
+	<div class="item">
+		<%= h website.domain %><br />
+		<%= link_to 'Edit', edit_website_path(website) %>&nbsp;|
+		<%= link_to 'Delete', website, :confirm => 'Are you sure?', :method => :delete %>
+	</div>
+	<div class="description"><%= h website.description %></div>		
+	<div class="clear"></div>
+</div>

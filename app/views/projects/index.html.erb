@@ -1,0 +1,26 @@
+<h1>All Projects</h1>
+
+<table>
+  <tr>
+	<th>Client</th>
+    <th>Project Name</th>
+	<th>Basecamp ID</th>
+    <th>Active</th>
+	<th>Actions</th>
+  </tr>
+
+<% @projects.each do |project| %>
+	<tr>
+		<td><%=h project.user.name %></td>
+	    <td><%=h project.name %></td>
+		<td><%=h project.basecamp_id %></td>
+	    <td><%=h project.active %></td>
+	    <td><%= link_to 'Show', project %></td>
+	    <td><%= link_to 'Edit/Add Workers', edit_project_path(project) %></td>
+		<td><%= link_to 'Create Project #1 Tasks', project1_basecamp_path(project) %></td>
+		<td><%= link_to 'Create Project #2 Tasks', project2_basecamp_path(project) %></td>
+	    <td><%= link_to 'Delete', project, :confirm => 'Are you sure?', :method => :delete %></td>
+	  </tr>
+<% end %>
+
+</table>
