@@ -250,12 +250,25 @@ a:hover
 }
 .nf-title
 {
-	padding: 5px;
+	padding: 5px 100px 5px 5px;
 	background-color: #e3e3e3;
+	position: relative;
+}
+.nf-title-action
+{
+	position: absolute;
+	right: 0px;
+	top: 0px;
 }
 .nf-body
 {
-	padding: 5px;
+	padding: 5px 20px 5px 5px;
+}
+.nf-body-action
+{
+	position:absolute;
+	right: 0px;
+	top: 0px;
 }
 /**************************FRIENDS******************/
 #chose-members

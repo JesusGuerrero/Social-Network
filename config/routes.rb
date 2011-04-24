@@ -2,8 +2,11 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :pages, :only => [ :about ]
   map.resources :networks
   map.resources :memberships
+  map.resources :microposts
 	map.resources :members, :only => [ :index, :networks, :users ]
-	map.friends 'friends/', :controller => 'members'
+	map.resources :message_systems, :only => [ :index, :new, :create ]
+	map.messages 'messages/:action', :controller => 'message_systems'
+	map.people 'people/:action', :controller => 'members'
 	
 	map.about '/about', :controller => 'pages', :action => 'about'
 	map.terms '/terms', :controller => 'pages', :action => 'terms'

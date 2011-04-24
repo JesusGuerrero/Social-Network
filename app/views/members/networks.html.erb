@@ -1,12 +1,19 @@
 
-<% 	@members.each do |m|  %>
+<% 	@networks.each do |m|  %>
 		<div class="network-feed">
 			<div class="nf-title"><%=h m.name %></div>
 			<div class="nf-body">
-<% 		@mbrs = Network.find( m.id )
-			@usr = @mbrs.users
-			@usr.each do |n| %>
-			<p><%=h n.name %></p>
+<% 		
+			@usrs = m.users
+			@usrs.each do |n| %>
+			<div><%=h n.name %> 
+		<% form_tag('/messages/new') do -%>
+			<%=hidden_field_tag 'send_to', n.id %>
+			<%=submit_tag 'Send Message' %>
+ 		<% end -%>
+
+			</div>
+			
 <%		end %>
 	</div>
 </div>

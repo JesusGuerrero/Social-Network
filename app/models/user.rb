@@ -43,10 +43,10 @@ class User < ActiveRecord::Base
 	has_many :reverse_relationships, :foreign_key => "friend_id", :class_name => "Relationship", :dependent => :destroy
 	has_many :followers, :through => :reverse_relationships, :source => :follower
 
-	has_many :message_systems, :foreign_key => "user_id"
-	has_many :sent_messages, :through => :message_systems
-	has_many :receive_messages, :foreign_key => "receiver_id", :class_name => "MessageSystem"
-	has_many :inbox_messages, :through => :receive_messages
+	has_many :sent_messages, :foreign_key => "user_id", :class_name => "MessageSystem"
+	has_many :inbox_messages, :foreign_key => "receiver_id", :class_name => "MessageSystem"
+
+	has_many :microposts
 	
 	def add_networks( network )
 		memberships.create!(:network_id => network )
@@ -64,15 +64,8 @@ class User < ActiveRecord::Base
 		relationships.find_by_friend_id(friend).destroy
 	end
 
-	def get_send_messages?(user)
-		message_systems.find_by_user_id( user )
-	end	
-	def send_message!(receiver, message)
-		message_systems.create!(:receiver_id => receiver, :message_id => message )
-	end
-
-	def inbox_messages?(receiver)
-		message_systems.find_by_user_id( 21 )
+	def send_message!(receiver, subject, body)
+		sent_messages.create!(:receiver_id => receiver, :message_id => receiver, :subject => subject, :body => body )
 	end
 
 	def deliver_password_reset_instructions!

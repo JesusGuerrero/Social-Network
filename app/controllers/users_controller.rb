@@ -33,12 +33,7 @@ class UsersController < ApplicationController
 		if !@user = current_user
 			redirect_to signin_path
 		end
-    
-    #@websites = @user.websites
-    #@keywords = @user.keywords
-    #@contents = @user.contents
-    @myNetworks = @user.networks
-		@networks = Network.all
+
     @title = CGI.escapeHTML(@user.name)
   end
 

@@ -1,0 +1,17 @@
+<h1>Message</h1>
+<h2>Inbox</h2>
+<% @inbox.each do |m| %>
+	Subject: <%=m.subject%><br/>
+	Body: <%=m.body%><br/>
+	<% form_tag('/messages/new') do -%>
+		<%=hidden_field_tag 'send_to', m.user_id %>
+		<%= submit_tag 'Reply' %>
+ 	<% end -%>
+	<br/>
+<% end %>
+<h2>Sent</h2>
+<% @sent.each do |m| %>
+	Subject: <%=m.subject%><br/>
+	Body: <%=m.body%><br/>
+	<br/>
+<% end %>

@@ -18,8 +18,6 @@ class MembersController < ApplicationController
 	end
 
 	def networks
-		@members = current_user.networks
-		
-		#@members = Network.users
+		@networks = current_user.networks
 	end
 end

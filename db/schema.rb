@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110422065729) do
+ActiveRecord::Schema.define(:version => 20110424024434) do
 
   create_table "contents", :force => true do |t|
     t.string    "link_url"
@@ -41,9 +41,11 @@ ActiveRecord::Schema.define(:version => 20110422065729) do
   add_index "memberships", ["user_id"], :name => "index_memberships_on_user_id"
 
   create_table "message_systems", :force => true do |t|
-    t.string   "user_id"
-    t.string   "receiver_id"
-    t.string   "message_id"
+    t.integer  "user_id"
+    t.integer  "receiver_id"
+    t.integer  "message_id"
+    t.string   "subject"
+    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -58,6 +60,18 @@ ActiveRecord::Schema.define(:version => 20110422065729) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "microposts", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "network_id"
+    t.integer  "micropost_id"
+    t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "microposts", ["network_id"], :name => "index_microposts_on_network_id"
+  add_index "microposts", ["user_id"], :name => "index_microposts_on_user_id"
 
   create_table "networks", :force => true do |t|
     t.string   "name"

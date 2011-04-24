@@ -1,9 +1,11 @@
 class CreateMessageSystems < ActiveRecord::Migration
   def self.up
     create_table :message_systems do |t|
-      t.string :user_id
-      t.string :receiver_id
-      t.string :message_id
+      t.integer :user_id
+      t.integer :receiver_id
+      t.integer :message_id
+			t.string	:subject
+			t.text		:body
 
       t.timestamps
     end

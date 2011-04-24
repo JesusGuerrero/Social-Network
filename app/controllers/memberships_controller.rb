@@ -4,7 +4,6 @@ class MembershipsController < ApplicationController
   def new
 		@user = current_user
 		@networks = Network.all
-		render "networks/_display"
   end
 
   def create

@@ -1,22 +1,29 @@
-Jesus Guerrero's Network<br/>
-<%
-ids = Array.new
-%>
-<%	@user.networks.each do |network2| 
- ids.push network2.id
-		end %>
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-  </tr>
-<% @networks.each do |network| %>
-		<% unless ids.include?( network.id ) %>
-  <tr>
-    <td><%=h network.name  %></td>
-    <td><%=h network.description %></td>
-    <td><%= link_to 'Add', :controller => "users", :action => "add_network", :id => network.id %></td>
-  </tr>
-		<% end %>
-<% end %>
-</table>
+<h3>My Networks</h3>
+	<% @user.networks.each do |m| %>
+		<div class="network-feed">
+			<div class="nf-title"><%=m.name%>
+				<div class="nf-title-action">
+					<% form_tag('/microposts/new') do -%>
+						<%=hidden_field_tag 'id', m.id %>
+						<%=submit_tag 'POST' %>
+ 					<% end -%>
+				</div>
+			</div>
+
+			<div class="nf-body">
+<% 	if @microposts = Micropost.find_all_by_network_id( m.id )
+			@microposts.each do |n|  %>
+				<div style="position:relative">
+<%			if n.user_id == current_user.id %>
+					<div class="nf-body-action"><%= link_to 'Destroy', n, :confirm => 'Are you sure?', :method => :delete %></div>
+			<%	end
+				%>
+				<p><%=n.content%></p>
+				</div>
+<%		end
+		else %>
+			No Messages
+	<% end %>
+			</div>
+		</div>
+	<%  end %>
