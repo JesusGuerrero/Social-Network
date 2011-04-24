@@ -1,5 +1,5 @@
 class Notifier < ActionMailer::Base
-default_url_options[:host] = "members.linknetworker.com"
+default_url_options[:host] = "stormy-mist-876.heroku.com"
 
 	def password_reset_instructions(user)
 		subject				"Password Reset Instructions"
