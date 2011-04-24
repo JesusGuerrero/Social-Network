@@ -28,6 +28,7 @@ Rails::Initializer.run do |config|
   # you must remove the Active Record framework.
    #config.frameworks -= [ :active_record, :active_resource, :action_mailer ]
 	#config.frameworks -= [ :action_mailer ]
+	config.action_mailer.delivery_method = :smtp
 
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
