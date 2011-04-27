@@ -13,11 +13,15 @@ ActionController::Routing::Routes.draw do |map|
 	map.privacy '/privacy', :controller => 'pages', :action => 'privacy'
 	map.contact '/contact', :controller => 'pages', :action => 'contact'
 	map.feedback '/feedback', :controller => 'pages', :action => 'feedback'
+	#map.'/:name', :to => "networks#show"
+ 	map.name '/network/:name', :controller => 'networks', :action => 'show'	
+	#map.computer_engineers '/computer_engineers', :controller => "networks", :action => "show", :id => "1"
 
   map.resource :user_session
   #map.root :controller => "user_sessions", :action => "new"
 	map.root :controller => "users", :action => "show"
   #map.resource :profile, :controller => "users", :action => "show"
+map.users '/users', :controller => 'users', :action => 'index'
   map.resources :users
   map.signup  "signup/",  :controller => 'users', :action => 'new'
 	map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate'

@@ -15,7 +15,12 @@ ids = Array.new
   <tr>
     <td><%=h network.name  %></td>
     <td><%=h network.description %></td>
-    <td><%= link_to 'Add', :controller => "users", :action => "add_network", :id => network.id %></td>
+		<% @membership.network_id = network.id %>
+    <td><% form_for @membership do |f| %>
+	<%= f.hidden_field :network_id  %>
+	<%= f.hidden_field :user_id  %>
+  <%= f.submit "Add" %>
+<% end %>
   </tr>
 		<% end %>
 <% end %>

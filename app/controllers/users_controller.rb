@@ -62,14 +62,6 @@ class UsersController < ApplicationController
     end
   end
 
-	def add_network
-		@user = current_user
-		@user.add_networks( params[:id] )
-		@user.save
-		#flash[:success] = "Added New Network"
-		redirect_to root_url
-	end
-
 	def remove_network
 		@user = current_user
 		@user.remove_networks( params[:id] )

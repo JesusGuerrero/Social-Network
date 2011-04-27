@@ -1,7 +1,7 @@
 <h3>My Networks</h3>
 	<% @user.networks.each do |m| %>
 		<div class="network-feed">
-			<div class="nf-title"><%=m.name%>
+			<div class="nf-title"><%= link_to m.name, :controller => "networks", :action => "show", :name => m.name %>
 				<div class="nf-title-action">
 					<% form_tag('/microposts/new') do -%>
 						<%=hidden_field_tag 'id', m.id %>
@@ -11,17 +11,18 @@
 			</div>
 
 			<div class="nf-body">
-<% 	if @microposts = Micropost.find_all_by_network_id( m.id )
+<% 	@microposts = Micropost.find_all_by_network_id( m.id )
+		if @microposts.count != 0
 			@microposts.each do |n|  %>
 				<div style="position:relative">
 <%			if n.user_id == current_user.id %>
 					<div class="nf-body-action"><%= link_to 'Destroy', n, :confirm => 'Are you sure?', :method => :delete %></div>
-			<%	end
+			<%end
 				%>
-				<p><%=n.content%></p>
+				<div><%=n.content%></div>
 				</div>
 <%		end
-		else %>
+		 else %>
 			No Messages
 	<% end %>
 			</div>

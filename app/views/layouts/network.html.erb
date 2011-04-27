@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title><%= title %></title>
+	<%= render 'layouts/stylesheets' %>
+	<%= javascript_include_tag 'jquery', 'application' %>
+  </head>
+  <body>
+		<% if @user = current_user %>
+			<%= render( 'users/controls') %>
+		<% end %>
+		<div class="container">
+			<%= render 'layouts/header' %>
+			
+			<div style="margin:10px 0 -7px 10px">
+				<span id="network-tab" class="round2 selected" style="margin-left:10px"><%= @network.name %></span>
+				<span id="network-tab" class="round2"><a href="#">All Content</a></span>
+				<span id="network-tab" class="round2"><a href="#">Discussions</a></span>
+				<span id="network-tab" class="round2"><a href="#">Documents</a></span>
+				<span id="network-tab" class="round2"><a href="#">Media</a></span>
+			</div>
+	    <div id="network-content" style="margin-top: 5px">
+			
+					<% flash.each do |key, value| %>
+			    	<%= content_tag(:div, value, :class => "flash #{key}") %>
+					<% end %>
+					<%= yield %>
+    	</div>
+			<div style="clear:both"></div>
+			<%= render 'layouts/footer' %>
+			<%= debug(params) if Rails.env.development? %>
+		</div>	
+  </body>
+</html>

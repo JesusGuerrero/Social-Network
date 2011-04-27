@@ -66,6 +66,12 @@ a:hover
   -webkit-border-radius: 0 0 20px 20px;
   border-radius:         0 0 20px 20px;
 }
+.round2
+{
+	-moz-border-radius:    5px 5px 0 0;
+  -webkit-border-radius: 5px 5px 0 0;
+  border-radius:         5px 5px 0 0;
+}
 #header
 {
 	background-color: black;
@@ -142,7 +148,46 @@ a:hover
   -webkit-border-radius: 20px 20px 20px 20px;
   border-radius:         20px 20px 20px 20px;
 	padding: 15px;
-	border: 5px solid #000;
+	/border: 5px solid #000;
+}
+#network-tab
+{
+	background-color:white; 
+	border-top: 5px solid #000;
+
+
+	font-size: 14px;
+	background-color:black;
+}
+#network-tab a
+{
+	color: #00D8A8;
+	padding: 5px 8px 4px;
+}
+#network-tab a:hover
+{
+		color: white;
+}
+.selected
+{
+	border-bottom: 5px solid #fff;
+	font-weight:bold;
+	background-color:white !important;
+	color: black !important;
+	border-top: 5px solid #fff !important;
+	border-left: 5px solid #fff;
+	border-right: 5px solid #fff;
+	padding:1px 5px 0px; 
+}
+#network-content
+{
+	background: white;
+	margin-top: 20px;
+	-moz-border-radius:    5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius:         5px 5px 5px 5px;
+	padding: 15px;
+	/*border: 5px solid #000;*/
 }
 /*******************ERROR HANDLING**********************/
 .fieldWithErrors {
@@ -184,17 +229,17 @@ a:hover
   list-style: square;
 }
 /*********************************/
-#content h1, h2, h3, h4, h5
+#content h1, h2, h3, h4, h5, #network-content h1, h2, h3, h4, h5
 {
 	color: black !important;
 }
-#content a
+#content a, #network-content a
 {
 	float:none;
 	padding:0
 	text-decoration: none;
 }
-#content a:hover
+#content a:hover, #network-content a:hover
 {
 	color: #00D8A8;
 }
@@ -251,8 +296,18 @@ a:hover
 .nf-title
 {
 	padding: 5px 100px 5px 5px;
-	background-color: #e3e3e3;
+	background-color: #000;
+	color: white;
+	font-weight: bold;
 	position: relative;
+}
+.nf-title a
+{
+	color:#00D8A8;
+}
+.nf-title a:hover
+{
+	color: white !important;
 }
 .nf-title-action
 {
@@ -270,6 +325,76 @@ a:hover
 	right: 0px;
 	top: 0px;
 }
+/************************NETWORK VIEW****************/
+#network-view
+{
+	display: block;
+	float:left; 
+	width:200px; 
+	margin-right:10px; 
+	padding:10px; 
+	background-color:#000; 
+	color:white;
+	-moz-border-radius:    5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius:         5px 5px 5px 5px;
+}
+#network-view h3, #network-view-s h3
+{
+	color: white !important;
+	margin: 0 0 3px;
+	font-size: 14px;
+	font-weight: bold;
+}
+#network-view ul, #network-view-s ul
+{
+	list-style: none;
+	padding: 0;	
+}
+#network-view ul li, #network-view-s ul li
+{
+	margin:0;
+	padding: 0 0 0 30px;
+	position: relative;
+	line-height:22px;
+}
+#network-view ul li a, #network-view-s ul li a
+{
+	color:#00D8A8;
+}
+#network-view ul li a:hover, #network-view-s ul li a:hover
+{
+	color: white;
+}
+#network-view ul li a span, #network-view-s ul li a span
+{
+	position: absolute;
+	left: 0;
+}
+/*MAIN BODY*/
+#network-view-main
+{
+	display: block;
+	margin: 0;
+	border: 1px solid #e3e3e3;
+	width: 458px;
+	float:left;
+}
+/*SUB BODY*/
+#network-view-s
+{
+	display: block;
+	float:right; 
+	width:200px; 
+	margin-left:10px; 
+	padding:10px; 
+	background-color:#000; 
+	color:white;
+	-moz-border-radius:    5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius:         5px 5px 5px 5px;
+}
+/**************************END NETWORK VIEW******************/
 /**************************FRIENDS******************/
 #chose-members
 {

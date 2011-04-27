@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
       if current_user
         store_location
         flash[:notice] = "You must be logged out to access this page"
-        redirect_to profile_url
+        redirect_to root_url
         return false
       end
     end
@@ -58,7 +58,7 @@ class ApplicationController < ActionController::Base
     end
     
     def admin_user
-      redirect_to profile_path unless current_user.admin?
+      redirect_to root_path unless current_user.admin?
     end
     
     def basecamp_connect

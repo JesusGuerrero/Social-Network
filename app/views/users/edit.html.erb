@@ -1,5 +1,5 @@
-<h1>Edit My Account</h1>
-
+<h3>Edit My Account</h3>
+<!--
 <% form_for @user do |f| %>
   <%= f.error_messages %>
 	<%= f.label :name %><br />	
@@ -16,8 +16,9 @@
 	<br />
   <%= f.submit "Update" %>
 <% end %>
-<br />
+<br />-->
 <table>
+		<tr><th>My Networks</th></tr>
 	<% @user.memberships.collect{|m| %>
 		<tr><td><%=m.network.name%></td><td><%= link_to "Remove", :action => "remove_network", :id => m.network_id %></td></tr>
 	<%  } %>

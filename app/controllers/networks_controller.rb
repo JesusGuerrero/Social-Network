@@ -11,13 +11,20 @@ class NetworksController < ApplicationController
   end
 
   def show
-    @network = Network.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @network }
-    end
+    if !@network = Network.find_by_name( params[:name] )
+			flash[:error] = "'"+params[:name]+"' network does not exist!"
+			redirect_to root_path
+		else
+	    respond_to do |format|
+  	    format.html { render :layout => "network" }# show.html.erb
+  	    format.xml  { render :xml => @network, :layout => "user_session" }
+  	  end
+		end
   end
+
+	#get '/:name'
+   # "Hello #{name}"
+  #end
 
   def new
     @network = Network.new
