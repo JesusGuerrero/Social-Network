@@ -30,8 +30,14 @@ class User < ActiveRecord::Base
   validates_presence_of :name
 
  	has_attached_file :photo, :styles => { :medium => "175x250>", :small => "100x125>", :thumb => "50x60>" },
+									:storage => :s3,
+									:bucket => 'computerenchiladas',
+									:s3_credentials => {
+										:access_key_id => ENV['S3_KEY'],
+										:secret_access_key => ENV['S3_SECRET']
+									},
                   :url  => "/images/users/:id/:style/:basename.:extension",
-                  :path => ":rails_root/public/images/users/:id/:style/:basename.:extension"
+                  :path => "/images/users/:id/:style/:basename.:extension"
 
 	#validates_attachment_presence :photo
 	#validates_attachment_size :photo, :less_than => 5.megabytes
