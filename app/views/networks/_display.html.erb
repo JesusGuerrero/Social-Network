@@ -9,22 +9,9 @@
  					<% end -%>
 				</div>
 			</div>
-
+			<% @microposts = Micropost.find_all_by_network_id( m.id ) %>
 			<div class="nf-body">
-<% 	@microposts = Micropost.find_all_by_network_id( m.id )
-		if @microposts.count != 0
-			@microposts.each do |n|  %>
-				<div style="position:relative">
-<%			if n.user_id == current_user.id %>
-					<div class="nf-body-action"><%= link_to 'Destroy', n, :confirm => 'Are you sure?', :method => :delete %></div>
-			<%end
-				%>
-				<div><%=n.content%></div>
-				</div>
-<%		end
-		 else %>
-			No Messages
-	<% end %>
+			<%= render "networks/microposts" %>
 			</div>
 		</div>
 	<%  end %>

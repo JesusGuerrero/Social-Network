@@ -13,17 +13,17 @@
 		</ul>
 </div>
 <div id="network-view-main">
-Recent Content
-<p>
+<h4>Recent Content</h4>
+<% m = @network %>
+<%= render 'networks/microposts' %>
+<!--<p>
   <b>Description:</b>
   <%=h @network.description %>
-</p>
+</p>-->
 
 </div>
 <div id="network-view-s">
-	<h3>Members</h3>
-		<ul>
-			<li><a href="#"><span><img height="20" width="20" src="" /></span><%=current_user.name%></a></li>
-		</ul>
+	<h3>Network Members</h3>
+		<%= render 'users/user' %>
 </div>
 <div style="clear:both"></div>

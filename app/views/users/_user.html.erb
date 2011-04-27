@@ -1,6 +1,8 @@
-<li>
-    <%= link_to h(user.name), user, :class => "username" %>
-	<% if current_user.admin? %>
-	  | <%= link_to "delete", user, :method => :delete, :confirm => "You sure?" %>
-	<% end %>
-</li>
+	<ul>
+<% 		
+			@network.users.each do |n| 
+			image = "<span><img height='20' width='20' src='' /></span>"
+			%>
+			<li><%= link_to image+n.name, root_path %></a></li>			
+<%		end %>
+	</ul>

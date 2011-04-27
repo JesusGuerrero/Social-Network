@@ -1,0 +1,15 @@
+
+<% 	
+		if @microposts.count != 0
+			@microposts.each do |n|  %>
+				<div style="position:relative">
+<%			if n.user_id == current_user.id %>
+					<div class="nf-body-action"><%= link_to 'Destroy', n, :confirm => 'Are you sure?', :method => :delete %></div>
+			<%end
+				%>
+				<div><%=n.content%></div>
+				</div>
+<%		end
+		 else %>
+			No Messages
+	<% end %>

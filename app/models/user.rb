@@ -20,7 +20,7 @@
 
 
 class User < ActiveRecord::Base
-	attr_accessible :id, :name, :email, :password, :password_confirmation, :openid_identifier, :last_tutorial, :network_ids
+	attr_accessible :id, :name, :email, :password, :password_confirmation, :openid_identifier, :last_tutorial, :network_ids, :photo
 
   acts_as_authentic do |c|
     if RAILS_ENV == 'test' # avoid collisions on "name already taken" stuff
@@ -28,7 +28,15 @@ class User < ActiveRecord::Base
     end
   end
   validates_presence_of :name
-  
+
+ 	has_attached_file :photo, :styles => { :medium => "175x250>", :small => "100x125>", :thumb => "50x60>" },
+                  :url  => "/images/users/:id/:style/:basename.:extension",
+                  :path => ":rails_root/public/images/users/:id/:style/:basename.:extension"
+
+	#validates_attachment_presence :photo
+	#validates_attachment_size :photo, :less_than => 5.megabytes
+	#validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png', 'image/gif']
+
   has_many :websites, :dependent => :destroy
   has_many :keywords, :dependent => :destroy
   has_many :contents, :through => :keywords

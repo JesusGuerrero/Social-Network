@@ -15,6 +15,7 @@ class NetworksController < ApplicationController
 			flash[:error] = "'"+params[:name]+"' network does not exist!"
 			redirect_to root_path
 		else
+			@microposts = Micropost.find_all_by_network_id( @network.id )
 	    respond_to do |format|
   	    format.html { render :layout => "network" }# show.html.erb
   	    format.xml  { render :xml => @network, :layout => "user_session" }

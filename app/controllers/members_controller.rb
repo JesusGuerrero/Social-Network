@@ -8,8 +8,7 @@ class MembersController < ApplicationController
 		@members = current_user.networks
 		@users = Array.new
 		@members.each do  |m|
-			@usr = m.users
-			@usr.each do |u|
+			m.users.each do |u|
 				unless @users.include?( u )
 					@users.push u
 				end

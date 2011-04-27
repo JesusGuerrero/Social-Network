@@ -19,7 +19,7 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
-
+	
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
@@ -29,7 +29,7 @@ Rails::Initializer.run do |config|
    #config.frameworks -= [ :active_record, :active_resource, :action_mailer ]
 	#config.frameworks -= [ :action_mailer ]
 	config.action_mailer.delivery_method = :smtp
-
+	
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
 

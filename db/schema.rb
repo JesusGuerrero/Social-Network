@@ -9,23 +9,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110424024434) do
+ActiveRecord::Schema.define(:version => 20110427104452) do
 
   create_table "contents", :force => true do |t|
-    t.string    "link_url"
-    t.integer   "keyword_id"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.string   "link_url"
+    t.integer  "keyword_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "contents", ["keyword_id"], :name => "index_contents_on_keyword_id"
 
   create_table "keywords", :force => true do |t|
-    t.string    "keyphrase"
-    t.text      "description"
-    t.integer   "user_id"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.string   "keyphrase"
+    t.text     "description"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "keywords", ["user_id"], :name => "index_keywords_on_user_id"
@@ -106,13 +106,13 @@ ActiveRecord::Schema.define(:version => 20110424024434) do
   add_index "relationships", ["user_id"], :name => "index_relationships_on_user_id"
 
   create_table "tutorials", :force => true do |t|
-    t.string    "name"
-    t.string    "category"
-    t.string    "permalink"
-    t.text      "content"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.integer   "page_order"
+    t.string   "name"
+    t.string   "category"
+    t.string   "permalink"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "page_order"
   end
 
   create_table "used_keywords", :force => true do |t|
@@ -123,29 +123,33 @@ ActiveRecord::Schema.define(:version => 20110424024434) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "name",                                 :null => false
-    t.string   "email",                                :null => false
-    t.string   "crypted_password",                     :null => false
-    t.string   "password_salt",                        :null => false
-    t.string   "persistence_token",                    :null => false
-    t.string   "perishable_token",                     :null => false
+    t.string   "name",                                  :null => false
+    t.string   "email",                                 :null => false
+    t.string   "crypted_password",                      :null => false
+    t.string   "password_salt",                         :null => false
+    t.string   "persistence_token",                     :null => false
+    t.string   "perishable_token",                      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "admin",             :default => false
-    t.integer  "level",             :default => 0
-    t.integer  "last_tutorial",     :default => 0
-    t.boolean  "buyer",             :default => false
-    t.boolean  "active",            :default => false, :null => false
+    t.boolean  "admin",              :default => false
+    t.integer  "level",              :default => 0
+    t.integer  "last_tutorial",      :default => 0
+    t.boolean  "buyer",              :default => false
+    t.boolean  "active",             :default => false, :null => false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   add_index "users", ["last_tutorial"], :name => "index_users_on_last_tutorial"
 
   create_table "websites", :force => true do |t|
-    t.string    "domain"
-    t.text      "description"
-    t.integer   "user_id"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.string   "domain"
+    t.text     "description"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "websites", ["user_id"], :name => "index_websites_on_user_id"

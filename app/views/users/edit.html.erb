@@ -1,6 +1,6 @@
 <h3>Edit My Account</h3>
-<!--
-<% form_for @user do |f| %>
+
+<% form_for @user, :html => {:multipart => true} do |f| %>
   <%= f.error_messages %>
 	<%= f.label :name %><br />	
 	<%= f.text_field :name %><br />
@@ -8,15 +8,10 @@
 	<%= f.label :email %><br />
 	<%= f.text_field :email %><br />
 	<br />
-	<%= f.label :password %><br />
-	<%= f.password_field :password %><br />
-	<br />
-	<%= f.label :password_confirmation %><br />
-	<%= f.password_field :password_confirmation %><br />
-	<br />
+	<%= f.file_field :photo %><br/>
   <%= f.submit "Update" %>
 <% end %>
-<br />-->
+<br />
 <table>
 		<tr><th>My Networks</th></tr>
 	<% @user.memberships.collect{|m| %>
