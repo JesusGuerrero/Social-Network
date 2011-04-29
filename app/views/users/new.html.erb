@@ -1,14 +1,12 @@
 <h1>Register</h1>
 
-<% form_for @user, :html => {:multipart => true} do |f| %>
+<% form_for @user do |f| %>
   <%= f.error_messages %>
   <%= f.label :name %><br />
 	<%= f.text_field :name %><br />
 	<br />
 	<%= f.label :email %><br />
 	<%= f.text_field :email %><br />
-	<br />
-		<%= f.file_field :photo %><br/>
 	<br/>
 	<%= f.label :password %><br />	
 	<%= f.password_field :password %><br />

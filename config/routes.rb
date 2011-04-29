@@ -21,7 +21,7 @@ ActionController::Routing::Routes.draw do |map|
   #map.root :controller => "user_sessions", :action => "new"
 	map.root :controller => "users", :action => "show"
   #map.resource :profile, :controller => "users", :action => "show"
-map.users '/users', :controller => 'users', :action => 'index'
+	#map.users '/users', :controller => 'users', :action => 'index'
   map.resources :users
   map.signup  "signup/",  :controller => 'users', :action => 'new'
 	map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate'
