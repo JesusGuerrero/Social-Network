@@ -1,0 +1,1 @@
+page.replace_html("resources", :partial => "add_attribute", :object => @user)
