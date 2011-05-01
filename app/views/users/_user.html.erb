@@ -1,8 +1,10 @@
-	<ul>
 <% 		
 			@network.users.each do |n| 
-			image = "<span><img height='20' width='20' src='' /></span>"
-			%>
-			<li><%= link_to image+n.name, root_path %></a></li>			
+			if n.photo.url(:thumb).to_s != "/photos/thumb/missing.png"
+				image = "<img src='" + n.photo.url(:thumb).to_s + "' />"
+			else
+				image = "<img width='50' src='/images/avatar.png' />"
+			end					
+		%>
+			<div class="network-members"><%= link_to image+n.name, root_path %></a></div>		
 <%		end %>
-	</ul>

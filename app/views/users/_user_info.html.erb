@@ -1,7 +1,11 @@
 <div class="block">
 	<div id="mini-profile">
 		<div id="mini-profile-image">
-			<%= image_tag @user.photo.url(:medium) %>
+				<% if @user.photo.url(:medium) != "/photos/medium/missing.png" %>
+					<%= image_tag @user.photo.url(:medium) %>
+				<% else %>
+					<%= image_tag "/images/avatar.png", :width => 175 %>
+				<% end %>
 		</div>
 		<div id="mini-profile-actions">		
 			<strong></strong><br />

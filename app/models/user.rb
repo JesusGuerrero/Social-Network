@@ -61,13 +61,25 @@ class User < ActiveRecord::Base
 	has_many :inbox_messages, :foreign_key => "receiver_id", :class_name => "MessageSystem"
 
 	has_many :microposts
-	
+	has_many :chats
+
 	def add_networks( network )
 		memberships.create!(:network_id => network )
 	end
 
 	def remove_networks( network )
 		memberships.find_by_network_id( network ).destroy
+	end
+	
+	def add_chat_message( content )
+		chats.create!(:content => content )
+	end
+	def remove_chat_message( id )
+		chats.find_by_user_id( id ).destroy
+	end
+
+	def add_networks( network )
+		memberships.create!(:network_id => network )
 	end
 
 	def add_friend!(friend)

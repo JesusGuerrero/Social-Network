@@ -9,7 +9,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110427104452) do
+ActiveRecord::Schema.define(:version => 20110429091126) do
+
+  create_table "chats", :force => true do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "network_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "chats", ["network_id"], :name => "index_chats_on_network_id"
+  add_index "chats", ["user_id"], :name => "index_chats_on_user_id"
 
   create_table "contents", :force => true do |t|
     t.string   "link_url"
@@ -53,13 +64,6 @@ ActiveRecord::Schema.define(:version => 20110427104452) do
   add_index "message_systems", ["message_id"], :name => "index_message_systems_on_message_id"
   add_index "message_systems", ["receiver_id"], :name => "index_message_systems_on_receiver_id"
   add_index "message_systems", ["user_id"], :name => "index_message_systems_on_user_id"
-
-  create_table "messages", :force => true do |t|
-    t.string   "subject"
-    t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "microposts", :force => true do |t|
     t.integer  "user_id"

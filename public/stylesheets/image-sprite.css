@@ -1,0 +1,83 @@
+.sprite {
+	background-image: url(/images/icons.png);
+	height: 16px;
+	width: 17px;
+	margin: -1px 4px 0 0;
+	border: 0;
+}
+.discussion
+{
+	background-position: -16px -16px;	
+}
+.question
+{
+	background-position:-80px -16px;
+}
+.article
+{
+	background-position: -16px -80px;
+}
+.blog
+{
+	background-position:-16px -144px;
+}
+.poll
+{
+	background-position:-16px -208px;
+}
+.email
+{
+	background-position:-656px -849px;;
+}
+.pdf
+{
+	background-position:-80px -80px;
+}
+.word
+{
+	background-position: -208px -80px;
+}
+.ppt
+{
+	background-position: -400px -80px;
+}
+.xls
+{
+	background-position: -464px -80px;
+}
+.photo
+{
+	background-position: -208px -269px;	
+}
+.close
+{
+	background-position: -272px -592px;
+}
+.video
+{
+	background-position: -16px -975px;
+}
+.secure
+{
+	background-position: -208px -656px;	
+}
+.calendar
+{
+	background-position: -400px -1296px;
+}
+.idea
+{
+	background-image: url(/images/ideas.png);
+	height: 16px;
+	width: 17px;
+	margin: -1px 4px 0 0;
+	background-position:-80px 0px;
+}
+.avatar_icon
+{
+	background-image:url(/images/avatar_icon.png);
+}
+.avatar
+{
+	background:url(/images/avatar.png);
+}

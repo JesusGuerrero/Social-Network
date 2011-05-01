@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :chats
+
   map.resources :pages, :only => [ :about ]
   map.resources :networks
   map.resources :memberships

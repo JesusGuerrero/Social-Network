@@ -236,7 +236,7 @@ a:hover
 #content a, #network-content a
 {
 	float:none;
-	padding:0
+	padding:0;
 	text-decoration: none;
 }
 #content a:hover, #network-content a:hover
@@ -347,30 +347,31 @@ a:hover
 	font-size: 14px;
 	font-weight: bold;
 }
-#network-view ul, #network-view-s ul
+#network-view ul
 {
 	list-style: none;
 	padding: 0;	
 }
-#network-view ul li, #network-view-s ul li
+#network-view ul li
 {
 	margin:0;
 	padding: 0 0 0 30px;
 	position: relative;
 	line-height:22px;
 }
-#network-view ul li a, #network-view-s ul li a
+#network-view ul li a, #network-view-s a
 {
 	color:#00D8A8;
 }
-#network-view ul li a:hover, #network-view-s ul li a:hover
+#network-view ul li a:hover, #network-view-s a:hover
 {
 	color: white;
 }
-#network-view ul li a span, #network-view-s ul li a span
+#network-view ul li a span
 {
 	position: absolute;
-	left: 0;
+	left: 10px;
+	top: 2px;
 }
 /*MAIN BODY*/
 #network-view-main
@@ -396,6 +397,11 @@ a:hover
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius:         5px 5px 5px 5px;
 }
+.network-members a img
+{
+	margin-right: 5px;
+}
+
 /**************************END NETWORK VIEW******************/
 /**************************FRIENDS******************/
 #chose-members

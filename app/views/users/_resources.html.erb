@@ -1,7 +1,10 @@
-<div id="resources" class="side_box" style="background-color:red">
-	<div class="menu round heading"><h2>Messages</h2></div>
-	<div class="tutorial_desc">
-		<%= rand( 21 ) %>
+<div class="menu round heading"><h2>Messages</h2>
+	<div id="resources" class="side_box" style="background-color:red">
 	</div>
 </div>
 
+<% form_remote_tag :url => { :controller => 'chats', :action => 'add_message' } do %>
+	<%=text_area_tag "content", nil, :id => "chatbox" %>
+	<%= submit_tag "SEND" %>
+<% end %>
+ 

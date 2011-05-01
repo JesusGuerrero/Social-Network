@@ -1,0 +1,2 @@
+#page.insert_html :bottom, 'resources', "<p>#{@user.chats.last.content}</p>"
+page.replace_html("clearForm", :partial => "add_message", :object => @user)

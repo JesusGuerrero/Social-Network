@@ -21,7 +21,7 @@
     channel.bind('my_event', function(data) 
 			{
 				var textNode = document.createElement( "p" );
-				textNode.innerHTML = data;
+				textNode.innerHTML = data.name + " " + data.time+" "+data.text;
 				document.getElementById('resources').appendChild( textNode );
     	});
   </script>
@@ -35,10 +35,16 @@
 	    <div id="content" class="round">
 				<div id="menu">
 					<%= render 'users/user_info' %>
-					<%= render 'users/resources' %>
-					<% form_remote_tag :url => { :action => 'add_attribute', :id => 1 } do %>
-						<%= submit_tag "Add to Cart" %>
-					<% end %>
+					<div id="resources">
+					<%= render 'chats/add_message' %>
+					
+
+					</div>
+					<div id="clearForm"></div>
+<% form_remote_tag :url => { :controller => 'chats', :action => 'add_message' } do %>
+<%=text_field_tag "content", nil, :id => "chatbox" %>
+<%= submit_tag "SEND" %>
+<% end %>
 				</div>
 				<div id="body">
 					<% flash.each do |key, value| %>
@@ -51,6 +57,24 @@
 			<div style="clear:both"></div>
 			<%= render 'layouts/footer' %>
 			<%= debug(params) if Rails.env.development? %>
-		</div>	
+		</div>
+<img height="20" width="20" class="sprite discussion" src="/images/transparent.png">
+<img height="20" width="20" class="sprite question" src="/images/transparent.png">
+<img height="20" width="20" class="sprite article" src="/images/transparent.png">
+<img height="20" width="20" class="sprite blog" src="/images/transparent.png">
+<img height="20" width="20" class="sprite poll" src="/images/transparent.png">
+<img height="20" width="20" class="sprite email" src="/images/transparent.png">
+<img height="20" width="20" class="sprite pdf" src="/images/transparent.png">
+<img height="20" width="20" class="idea" src="/images/transparent.png">
+<img height="20" width="20" class="sprite word" src="/images/transparent.png">
+<img height="20" width="20" class="sprite ppt" src="/images/transparent.png">
+<img height="20" width="20" class="sprite xls" src="/images/transparent.png">
+<img height="20" width="20" class="sprite photo" src="/images/transparent.png">
+<img height="20" width="20" class="sprite close" src="/images/transparent.png">
+<img height="20" width="20" class="sprite video" src="/images/transparent.png">
+<img height="20" width="20" class="sprite secure" src="/images/transparent.png">
+<img height="20" width="20" class="sprite calendar" src="/images/transparent.png">
+<img height="25" width="25" class="avatar_icon" src="/images/transparent.png"><br/>
+<img height="128" width="128" class="avatar" src="/images/transparent.png">
   </body>
 </html>
