@@ -4,3 +4,4 @@ factory_girl
 RedCloth -v 4.2.2
 xml-simple
 aws-s3
+pusher
