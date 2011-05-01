@@ -1,5 +1,5 @@
 rails -v 2.3.8
-authlogic
+authlogic -v 2.1.6
 factory_girl
 RedCloth -v 4.2.2
 xml-simple
