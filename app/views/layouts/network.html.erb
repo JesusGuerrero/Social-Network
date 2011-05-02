@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <title><%= title %></title>
+    <title>Collaborative Networking</title>
 	<%= render 'layouts/stylesheets' %>
 	<%= javascript_include_tag 'jquery', 'application' %>
 	<%= javascript_include_tag :defaults %>
@@ -36,9 +36,7 @@
   </script>
   </head>
   <body>
-		<% if @user = current_user %>
-			<%= render( 'users/controls') %>
-		<% end %>
+		<% @user = current_user %>
 		<div class="container">
 			<%= render 'layouts/header' %>
 			

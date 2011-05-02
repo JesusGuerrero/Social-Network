@@ -6,7 +6,8 @@
 			logo_link = signin_path
 		end
 %>			
-		<h1><%= link_to "Computer Enchiladas", logo_link %></h1>
+		<div style="float:right; margin-right:20px"><%=@user.name%></div>
+		<h1><%= link_to "Collaborative Networking", logo_link %></h1>
 	</div>
 	<div id="myNavigation">
 		<% if current_user %>
@@ -15,7 +16,8 @@
 			<li><%= link_to "My Profile", :controller => "users", :action=>"view", :id => current_user.id %></li>
 			<li><%= link_to "People", people_path %></li>
 			<li><%= link_to "Messages", messages_path %></li>
-			<li><%= link_to "Settings", edit_user_path(current_user) %></li>		
+			<li><%= link_to "Settings", edit_user_path(current_user) %></li>	
+			<li><%= link_to "Sign Out", signout_path %></li>		
 		</ul>
 		<% else %>
 		<ul id="require_no_user">
