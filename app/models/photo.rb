@@ -12,5 +12,5 @@ class Photo < ActiveRecord::Base
                   :url  => "/images/photos/:id/:style/:basename.:extension",
                   :path => "/images/photos/:id/:style/:basename.:extension"
 	has_many :photo_comments
-
+	validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']
 end

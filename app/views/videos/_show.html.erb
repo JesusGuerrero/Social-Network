@@ -1,3 +1,23 @@
+
+
+
+
 <% video = Video.find( params[:v_id] ) %>
-<h1><%=video.title%></h1>
+<% user = User.find( video.user_id ) %>
+Posted By: <%=user.name%><br/>
+On <%=video.created_at.strftime( "%m/%d/%Y %I:%M%p")%><br/>
+<div style="border:1px solid #e3e3e3; text-align:center" class="isRound">
 <%=video.code%>
+</div>
+<div style="margin: 10px 0; border: 1px solid #e3e3e3; padding:10px;"  class="isRound">
+<h4>Comments</h4>
+<% video.video_comments.each do |cmt| %>
+<% theUser = User.find( cmt.user_id ) %>
+	
+
+<div id="photo-comments">
+<%=current_user.name == theUser.name ? (link_to "Destroy", :controller => "video_comments", :action => "destroy", :id => cmt.id, :name => @network.name, :v_id => params[:v_id]):""%>
+<div style="margin-right:50px"><b><%=theUser.name%></b> <%=cmt.created_at.strftime( "(%m/%d/%Y %I:%M%p)")%>: <%=cmt.content%></div></div>
+<% end%>
+</div>
+<%=render "video_comments/new" %>

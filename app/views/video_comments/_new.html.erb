@@ -1,0 +1,11 @@
+<% @videocomment = VideoComment.new( :user_id => current_user.id )%>
+<% form_for @videocomment do |f| %>
+  <%= f.error_messages %>
+	<%= f.hidden_field :video_id %>
+	<%= f.hidden_field :user_id %>
+	<%=hidden_field_tag "name", @network.name %>
+	<%=hidden_field_tag "v_id", params[:v_id] %>
+  <%= f.label :ADD_Comment %><br />
+	<%= f.text_field :content, :style=>"width:100%" %><br />
+  <%= f.submit "POST" %>
+<% end %>

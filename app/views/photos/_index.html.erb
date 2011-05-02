@@ -12,7 +12,7 @@
 <tr>
 	<td><%=image_tag p.photo.url(:small)%></td>
 	<td><%=p.photo_file_name%></td>
-	<td><%=p.created_at%></td>
+	<td><%=p.created_at.strftime( "%m/%d/%Y %I:%M%p")%></td>
 <% @user = User.find( p.user_id )%>
 	<td><%=@user.name%></td>
 	<td><%= link_to "View", :name => @network.name,  :tab => params[:tab], :photo => "show", :p_id => p.id %></td>

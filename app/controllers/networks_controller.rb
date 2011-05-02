@@ -18,13 +18,17 @@ class NetworksController < ApplicationController
 			@microposts = Micropost.find_all_by_network_id( @network.id )
 			@tabs = [@network.name, "All Content", "Chat Room", "Discussions", "Documents", "Media"]
 			if params[:video_add]
-				@video = current_user.videos.create!(params[:video_add])
+				@video = current_user.videos.create(params[:video_add])
 				@video.save
 				params[:tab] = "Media"
 			end
 			if params[:photo_add]
-				@photo = current_user.photos.create!(params[:photo_add])
-				@photo.save
+					@photo = current_user.photos.create(params[:photo_add])
+				if !@photo.save
+					flash[:error] = "Unable to add photo, system accepts only png & jpeg"
+				else
+					flash[:success] = "Photo added to "+@network.name
+				end
 				params[:tab] = "Media"
 			end
 			if !params[:tab] or !@tabs.include?(params[:tab])

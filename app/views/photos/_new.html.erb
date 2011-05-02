@@ -5,5 +5,6 @@
 	<%= f.hidden_field :network_id %>
 	<%= f.hidden_field :user_id %>
   <%= f.file_field :photo %><br/><br/><br/>
-  <%= f.submit "Submit" %>
+  <%= link_to 'Cancel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;', :tab => "Media", :photo => "index" %><%= f.submit "Submit" %>
 <% end %>
+

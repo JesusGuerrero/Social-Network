@@ -1,8 +1,8 @@
 <% photo = Photo.find( params[:p_id] ) %>
 <% user = User.find( photo.user_id ) %>
 Posted By: <%=user.name%><br/>
-On <%=photo.created_at%><br/>
-<div style="border:1px solid #e3e3e3" class="isRound">
+On <%=photo.created_at.strftime( "%m/%d/%Y %I:%M%p")%><br/>
+<div style="border:1px solid #e3e3e3;text-align:center" class="isRound">
 <%=image_tag photo.photo.url%>
 </div>
 <div style="margin: 10px 0; border: 1px solid #e3e3e3; padding:10px;"  class="isRound">
@@ -12,7 +12,7 @@ On <%=photo.created_at%><br/>
 	
 
 <div id="photo-comments">
-<%=current_user.name == theUser.name ? (link_to "Destroy", :controller => "photo_comments", :action => "destroy", :id => cmt.id, :name => @network.name, :p_id => params[:p_id]):"NOT"%>
+<%=current_user.name == theUser.name ? (link_to "Destroy", :controller => "photo_comments", :action => "destroy", :id => cmt.id, :name => @network.name, :p_id => params[:p_id]):""%>
 <div style="margin-right:50px"><b><%=theUser.name%></b> <%=cmt.created_at.strftime( "(%m/%d/%Y %I:%M%p)")%>: <%=cmt.content%></div></div>
 <% end%>
 </div>

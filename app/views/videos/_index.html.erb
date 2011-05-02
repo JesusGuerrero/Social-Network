@@ -10,7 +10,7 @@
 <%@network.videos.each do |v| %>
 <tr>
 	<td><%=v.title%></td>
-	<td><%=v.created_at%></td>
+	<td><%=v.created_at.strftime( "%m/%d/%Y %I:%M%p")%></td>
 <% @user = User.find( v.user_id )%>
 	<td><%=@user.name%></td>
 	<td><%= link_to "View", :name => @network.name,  :tab => params[:tab], :video => "show", :v_id => v.id %></td>
