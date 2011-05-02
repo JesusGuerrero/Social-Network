@@ -28,6 +28,16 @@
 <h4>Recent Content</h4>
 <% m = @network %>
 <%= render 'networks/microposts' %>
+
+<% 
+@micropost = Micropost.new( :network_id => m.id )
+form_for :micropost do |f| %>
+  <%= f.error_messages %>
+	<%= f.hidden_field :network_id %>
+  <%= f.label :content %><br />
+	<%= f.text_field :content %><br />
+  <%= f.submit "Post" %>
+<% end %>
 <!--<p>
   <b>Description:</b>
   <%=h @network.description %>

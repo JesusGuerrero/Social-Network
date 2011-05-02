@@ -4,17 +4,21 @@
 			<div class="nf-title"><%=h m.name %></div>
 			<div class="nf-body">
 <% 		
-			@usrs = m.users
-			@usrs.each do |n| %>
-			<div><%=h n.name %> 
-		<% form_tag('/messages/new') do -%>
+			@usrs = m.users %>
+	<table>
+		<%	@usrs.each do |n| %>
+			<tr><td><%=h n.name %></td><td> 
+
+		<% 
+		if current_user.id != n.id
+			form_tag('/messages/new') do %>
 			<%=hidden_field_tag 'send_to', n.id %>
 			<%=submit_tag 'Send Message' %>
- 		<% end -%>
-
-			</div>
-			
+ 		<% end %>
+		<% end %>
+			</td></tr>
 <%		end %>
+			</table>
 	</div>
 </div>
 <% end %>

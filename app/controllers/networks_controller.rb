@@ -11,6 +11,15 @@ class NetworksController < ApplicationController
   end
 
   def show
+		if params[:micropost]
+				@post = current_user.microposts.create(params[:micropost])
+				if !@post.save
+					flash[:error] = "Unable to post"
+				else
+					flash[:success] = "Posted"
+				end
+				params[:tab] = ""
+			end		
     if !@network = Network.find_by_name( params[:name] )
 			flash[:error] = "'"+params[:name]+"' network does not exist!"
 			redirect_to root_path
@@ -21,7 +30,7 @@ class NetworksController < ApplicationController
 				@video = current_user.videos.create(params[:video_add])
 				@video.save
 				params[:tab] = "Media"
-			end
+			end		
 			if params[:photo_add]
 					@photo = current_user.photos.create(params[:photo_add])
 				if !@photo.save

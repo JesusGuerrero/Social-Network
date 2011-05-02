@@ -105,6 +105,11 @@ class UsersController < ApplicationController
 		end
 	end
 	  
+	def view
+    @user = User.find(params[:id])
+		render :layout => "user_session"
+	end
+
   def destroy
     @user = User.find(params[:id])
     if current_user?(@user)

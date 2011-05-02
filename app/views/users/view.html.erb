@@ -1,0 +1,45 @@
+
+<table style="width:200px; float:left">
+	<tr>	
+		<td style="">
+<div id="mini-profile">
+		<div id="mini-profile-image">
+				<% if @user.photo.url(:medium) != "/photos/medium/missing.png" %>
+					<%= image_tag @user.photo.url(:medium) %>
+				<% else %>
+					<%= image_tag "/images/avatar.png", :width => 175 %>
+				<% end %>
+		</div>
+	</div>
+<div class="block_body">
+		<table>
+			<tr><td><div id="mini-profile-actions">		
+			<strong></strong>
+			<span style="font-size:14px"><%=@user.name%></span><br />
+			San Jose, CA<br/>
+			United States
+		</div></td></tr>
+			<tr>
+				<td>
+		<strong>Networks:</strong></td><td><%= @user.networks.count %></td>
+			</tr>
+			<tr><td>
+		<strong>Images:</strong></td><td><%= @user.photos.count %></td></tr>
+		<tr><td>
+		<strong>Videos:</strong></td><td><%= @user.videos.count %></td></tr>
+		<tr><td>
+		<strong>Documents:</strong></td><td><%= @user.documents.count %></td></tr>
+
+		</table>
+<% 
+	if current_user.id != @user.id
+		form_tag('/messages/new') do -%>
+				<%=hidden_field_tag 'send_to', @user.id %>
+				<%=submit_tag 'Send Message' %>
+ 			<% end -%>
+	<% end%>
+	</div>
+</td></tr></table>
+<div style="margin-left:300px">PROFILE INFORMATION</div>
+<div style="clear:both"></div>
+

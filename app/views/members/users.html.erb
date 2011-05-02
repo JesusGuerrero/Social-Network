@@ -1,3 +1,13 @@
+<table>
 <% 	@users.each do |m|  %>
-<p><%=h m.name %></p>
+<tr><td><%=h m.name %></td><td>
+<% 
+	if current_user.id != m.id
+		form_tag('/messages/new') do -%>
+				<%=hidden_field_tag 'send_to', m.id %>
+				<%=submit_tag 'Send Message' %>
+ 			<% end -%>
+	<% end%>
+</td></tr>
 <% end %>
+</table>

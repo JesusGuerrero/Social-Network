@@ -6,5 +6,5 @@
 				image = "<img width='50' src='/images/avatar.png' />"
 			end					
 		%>
-			<div class="network-members"><%= link_to image+n.name, root_path %></a></div>		
+			<div class="network-members"><%= link_to image+n.name, :controller => "users", :action => "view", :id => n.id %></a></div>		
 <%		end %>

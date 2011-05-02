@@ -1,15 +1,8 @@
+<% @microposts.each do |cmt| %>
+<% theUser = User.find( cmt.user_id ) %>
+<div id="photo-comments">
+<%=current_user.name == theUser.name ? (link_to 'Destroy', cmt, :confirm => 'Are you sure?', :method => :delete):""%>
+<div style="margin-right:50px"><b><%=theUser.name%></b> <%=cmt.created_at.strftime( "(%m/%d/%Y %I:%M%p)")%>: <%=cmt.content%></div></div>
+<% end%>
 
-<% 	
-		if @microposts.count != 0
-			@microposts.each do |n|  %>
-				<div style="position:relative">
-<%			if n.user_id == current_user.id %>
-					<div class="nf-body-action"><%= link_to 'Destroy', n, :confirm => 'Are you sure?', :method => :delete %></div>
-			<%end
-				%>
-				<div style="margin-right:100px"><%=n.content%></div>
-				</div>
-<%		end
-		 else %>
-			No Messages
-	<% end %>
+
