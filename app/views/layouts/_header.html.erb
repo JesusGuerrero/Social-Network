@@ -5,8 +5,8 @@
 		else
 			logo_link = signin_path
 		end
-%>			
-		<div style="float:right; margin-right:20px"><%=@user.name%></div>
+%>	
+		<div style="float:right; margin-right:20px"><%= @user ? @user.name : ""%></div>
 		<h1><%= link_to "Collaborative Networking", logo_link %></h1>
 	</div>
 	<div id="myNavigation">
