@@ -10,6 +10,7 @@ class Network < ActiveRecord::Base
 	has_many :messages
 	has_many :videos
 	has_many :photos
+	has_many :documents
 	def get_members?( network )
 		memberships.find_by_network_id( network )
 	end

@@ -31,6 +31,15 @@ class NetworksController < ApplicationController
 				end
 				params[:tab] = "Media"
 			end
+			if params[:document_add]
+					@document = current_user.documents.create(params[:document_add])
+				if !@document.save
+					flash[:error] = "Unable to add document, unknown format"
+				else
+					flash[:success] = "File Uploaded to "+@network.name
+				end
+				params[:tab] = "Documents"
+			end
 			if !params[:tab] or !@tabs.include?(params[:tab])
 				params[:tab] = @tabs[0]
 			end

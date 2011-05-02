@@ -7,6 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :microposts
 	map.resources :videos
 	map.resources :photos
+	map.resources :documents
 	map.resources :photo_comments
 	map.resources :video_comments
 	map.resources :members, :only => [ :index, :networks, :users ]

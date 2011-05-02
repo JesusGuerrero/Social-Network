@@ -1,0 +1,25 @@
+<%
+if params[:word]
+	cancel_link = link_to "Cancel"+"&nbsp;"*5, :tab => params[:tab], :word => "index"
+	file_type = "Add Word Document"
+elsif params[:pdf]
+	cancel_link = link_to "Cancel"+"&nbsp;"*5, :tab => params[:tab], :pdf => "index"
+	file_type = "Add PDF Document"
+elsif params[:powerpoint]
+	cancel_link = link_to "Cancel"+"&nbsp;"*5, :tab => params[:tab], :powerpoint => "index"
+	file_type = "Add Powerpoint Presentation"
+elsif params[:spreadsheet]
+	cancel_link = link_to "Cancel"+"&nbsp;"*5, :tab => params[:tab], :spreadsheet => "index"
+	file_type = "Add Spreadsheet"
+end 
+%>
+<h2><%=file_type%></h2>
+<% @document_add = current_user.documents.new(:network_id => @network.id) %>
+<% form_for :document_add, :html => {:multipart => true} do |f| %>
+  <%= f.error_messages %>
+	<%= f.hidden_field :network_id %>
+	<%= f.hidden_field :user_id %>
+  <%= f.file_field :document %><br/><br/><br/>
+  <%= cancel_link %><%= f.submit "Submit" %>
+<% end %>
+

@@ -1,0 +1,50 @@
+<%
+if params[:word]
+	add_link = link_to "Add Word Document", :tab => params[:tab], :word => "add"
+	type = "application/msword"
+	file_type = "Word Documents"
+elsif params[:pdf]
+	add_link = link_to "Add PDF Document", :tab => params[:tab], :pdf => "add"
+	type = "application/pdf"
+	file_type = "PDF Documents"
+elsif params[:powerpoint]
+	add_link = link_to "Add Powerpoint", :tab => params[:tab], :powerpoint => "add"
+	type = "application/vnd.ms-powerpoint"
+	file_type = "Powerpoint Presentations"
+elsif params[:spreadsheet]
+	add_link = link_to "Add Spreadsheet", :tab => params[:tab], :spreadsheet => "add"
+	type = "application/vnd.ms-excel"
+	file_type = "Spreadsheets"
+else
+	add_link = ""
+	type = 1
+	file_type = "All Files"
+end 
+%>
+
+<h2><%=file_type%></h2>
+<%=add_link%>
+<div style="border:1px solid #e3e3e3">
+<table style="width:648px">
+	<tr>
+		<th>Link</th>
+		<th>Filename</th>
+		<th>Created</th>
+		<th>Created By</th>
+		<th>&nbsp;</th>
+	</tr>
+<%@network.documents.each do |d| 
+	if d.document_content_type == type or type==1 %>
+<tr>
+	<td><%=link_to "Download", d.document.url%></td>
+	<td><%=d.document_file_name%></td>
+	<td><%=d.created_at.strftime( "%m/%d/%Y %I:%M%p")%></td>
+<% @user = User.find( d.user_id )%>
+	<td><%=@user.name%></td>
+<%	if @user.id == current_user.id %>
+	<td><%=link_to "Destroy", :controller => "documents", :action => "destroy", :id => d.id, :name => @network.name  %></td>
+<%	end 
+	end %>
+<%end%>
+</table>
+</div>

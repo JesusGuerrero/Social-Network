@@ -1,0 +1,10 @@
+<h2>Add New Document</h2>
+<% @document_add = current_user.documents.new(:network_id => @network.id) %>
+<% form_for :document_add, :html => {:multipart => true} do |f| %>
+  <%= f.error_messages %>
+	<%= f.hidden_field :network_id %>
+	<%= f.hidden_field :user_id %>
+  <%= f.file_field :document %><br/><br/><br/>
+  <%= link_to 'Cancel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;', :tab => "Documents", :word => "index" %><%= f.submit "Submit" %>
+<% end %>
+

@@ -1,14 +1,78 @@
 <div id="network-view">
-	<h3><%=params[:tab]%></h3>
+	<h3><%=params[:tab]%></h3>		
+	<ul>
+		<li><%= link_to "All Documents", :tab => params[:tab] %></li>
+		<li><%= link_to '<span><img height="20" width="20" class="sprite word" src="/images/transparent.png"></span>
+				Add Document', :tab => "Documents", :word => "add" %></li>
+			<li>
+			<%= link_to '<span><img height="20" width="20" class="sprite pdf" src="/images/transparent.png"></span>
+				Add PDF', :tab => "Documents", :pdf => "add" %></li>
+			<li>
+			<%= link_to '<span><img height="20" width="20" class="sprite ppt" src="/images/transparent.png"></span>
+				Add Powerpoint', :tab => "Documents", :powerpoint => "add" %></li>
+			<li>
+			<%= link_to '<span><img height="20" width="20" class="sprite xls" src="/images/transparent.png"></span>
+				Add Spreadsheet', :tab => "Documents", :spreadsheet => "add" %></li>
+	</ul>
+</div>
+
+
+
+
+<div id="network-view-main" style="width:688px">
+<%
+		@t = ["summary", "word", "pdf", "powerpoint", "spreadsheet"]
+		if !params[:word] and !params[:pdf] and !params[:powerpoint] and !params[:spreadsheet]
+			params[:summary] = "index"
+		end
+		@t.each do |t|
+%>
+		<div id="network-tab" class="round2 <%=params[t] ? "selected2" : "" %>">
+		<%
+			if params[t] == "index" or params[t] == "add" or params[t] == "show" %>
+			<%=t%>
+<%
+			else %>
+				<%=link_to t, :tab => params[:tab],t => "index" %>
+	<%	
+			end%></div>
 		
+<%	
+		end %>
+	<div style="clear:both"></div>
+<div class="media-body">
+<% if params[:word] %>
+	<%	case params[:word] when "add" %>
+		<%=render "documents/new" -%>
+	<%	when "index" %>
+		<%=render "documents/index" %>
+	<%	else %>
+	<h4>Recent Media</h4>
+		<%=render "videos/index" -%>
+	<%	end
+elsif params[:pdf] %>
+<%	case params[:pdf] when "add" %>
+	<%=render "documents/new" -%>
+<%	when "index" %>
+		<%=render "documents/index" %>
+<% end
+elsif params[:powerpoint] %>
+<%	case params[:powerpoint] when "add" %>
+	<%=render "documents/new" -%>
+<%	when "index" %>
+		<%=render "documents/index" %>
+<% end
+elsif params[:spreadsheet] %>
+<%	case params[:spreadsheet] when "add" %>
+	<%=render "documents/new" -%>
+<%	when "index" %>
+		<%=render "documents/index" %>
+<% end
+else %>
+		<%=render "documents/index" -%>
+<%
+end%>
 </div>
-<div id="network-view-main">
-<h4>Recent Content</h4>
-<% m = @network %>
-<%= render 'networks/microposts' %>
-</div>
-<div id="network-view-s">
-	<h3>EMPTY</h3>
 </div>
 <div style="clear:both"></div>
 

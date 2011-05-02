@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110502085005) do
+ActiveRecord::Schema.define(:version => 20110502094815) do
 
   create_table "chats", :force => true do |t|
     t.text     "content"
@@ -30,6 +30,20 @@ ActiveRecord::Schema.define(:version => 20110502085005) do
   end
 
   add_index "contents", ["keyword_id"], :name => "index_contents_on_keyword_id"
+
+  create_table "documents", :force => true do |t|
+    t.string   "document_file_name"
+    t.string   "document_content_type"
+    t.integer  "document_file_size"
+    t.datetime "document_updated_at"
+    t.integer  "user_id"
+    t.integer  "network_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "documents", ["network_id"], :name => "index_documents_on_network_id"
+  add_index "documents", ["user_id"], :name => "index_documents_on_user_id"
 
   create_table "keywords", :force => true do |t|
     t.string   "keyphrase"

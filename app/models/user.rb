@@ -64,6 +64,7 @@ class User < ActiveRecord::Base
 	has_many :chats
 	has_many :videos
 	has_many :photos
+	has_many :documents
 
 	def add_networks( network )
 		memberships.create!(:network_id => network )

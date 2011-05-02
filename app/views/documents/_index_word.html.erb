@@ -1,0 +1,30 @@
+<% if params[:word] %>
+	<% add_link = link_to "Add Word Document", :tab => params[:tab], :word => "add" %>
+	
+<%	end %>
+
+
+<h2>Word Documents</h2>
+<%=add_link%>
+<div style="border:1px solid #e3e3e3">
+<table style="width:648px">
+	<tr>
+		<th>Link</th>
+		<th>Filename</th>
+		<th>Created</th>
+		<th>Created By</th>
+		<th>&nbsp;</th>
+	</tr>
+<%@network.documents.each do |d| %>
+<tr>
+	<td><%=link_to "Download", d.document.url%></td>
+	<td><%=d.document_file_name%></td>
+	<td><%=d.created_at.strftime( "%m/%d/%Y %I:%M%p")%></td>
+<% @user = User.find( d.user_id )%>
+	<td><%=@user.name%></td>
+<%	if @user.id == current_user.id %>
+	<td><%=link_to "Destroy", :controller => "documents", :action => "destroy", :id => d.id, :name => @network.name  %></td>
+<% 	end %>
+<%end%>
+</table>
+</div>
