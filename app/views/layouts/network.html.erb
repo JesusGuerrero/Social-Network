@@ -18,9 +18,15 @@
 
     var pusher = new Pusher('a48d410e91f37cb676bf');
     var channel = pusher.subscribe('test_channel');
+		var current_user = '<%=current_user.name%>'
     channel.bind('my_event', function(data) 
 			{
-				var textNode = document.createElement( "p" );
+				var textNode = document.createElement( "div" );
+				if (current_user == data.name)
+				{
+					textNode.style.backgroundColor = "#DEFFFD";
+				}
+				textNode.style.padding = "10px";
 				textNode.innerHTML = "<b>"+data.name + " " + data.time+":</b> "+data.text;
 				var objDiv = document.getElementById('resources');
 				objDiv.appendChild( textNode );

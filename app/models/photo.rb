@@ -11,5 +11,6 @@ class Photo < ActiveRecord::Base
 									},
                   :url  => "/images/photos/:id/:style/:basename.:extension",
                   :path => "/images/photos/:id/:style/:basename.:extension"
+	has_many :photo_comments
 
 end

@@ -23,7 +23,7 @@
 %>
 		<div id="network-tab" class="round2 <%=params[t] ? "selected2" : "" %>">
 		<%
-			if params[t] == "index" %>
+			if params[t] == "index" or params[t] == "add" or params[t] == "show" %>
 			<%=t%>
 <%
 			else %>

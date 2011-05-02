@@ -71,6 +71,12 @@ a:hover
   -webkit-border-radius: 5px 5px 0 0;
   border-radius:         5px 5px 0 0;
 }
+.isRound
+{
+	-moz-border-radius:    5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius:         5px 5px 5px 5px;
+}
 #header
 {
 	background-color: black;
@@ -448,10 +454,18 @@ a:hover
   border-radius:         5px 5px 5px 5px;
 
 }
+#photo-comments
+{
+	padding:5px 0;
+}
+#photo-comments a
+{
+	float:right;
+}
 /*************NETWORK CHAT***********************/
 #resources
 {
-	padding: 10px;
+	padding: 10px 0;
 	border: 1px solid #e3e3e3;
 	height:300px;
 	overflow: auto;

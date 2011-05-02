@@ -7,6 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :microposts
 	map.resources :videos
 	map.resources :photos
+	map.resources :photo_comments
 	map.resources :members, :only => [ :index, :networks, :users ]
 	map.resources :message_systems, :only => [ :index, :new, :create ]
 	map.messages 'messages/:action', :controller => 'message_systems'
