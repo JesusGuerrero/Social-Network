@@ -5,6 +5,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :networks
   map.resources :memberships
   map.resources :microposts
+	map.resources :videos
+	map.resources :photos
 	map.resources :members, :only => [ :index, :networks, :users ]
 	map.resources :message_systems, :only => [ :index, :new, :create ]
 	map.messages 'messages/:action', :controller => 'message_systems'

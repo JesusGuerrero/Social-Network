@@ -1,0 +1,26 @@
+<table cellpadding="0" class="email-menu">
+	<tr>
+		<td width="20" height="15"><img height="16" width="17" class="sprite message-new" src="/images/transparent.png"></td><td><%=link_to "Compose Message", :controller => :messages, :action => "new" %></td>
+	</tr>
+<table cellpadding="0" class="email-menu">
+	<tr>
+		<td width="20"><img height="20" width="20" class="sprite inbox" src="/images/transparent.png"></td>
+		<td><%=link_to "Inbox", :controller => "messages"%></td>
+		<td><%=@inbox.count%></td>
+	</tr>
+	<tr>
+		<td><img height="20" width="20" class="sprite folder-sent" src="/images/transparent.png"></td>
+		<td><%=link_to "Sent", :controller => "messages", :sent => "true"  %></td>
+		<td><%=@sent.count%></td>
+	</tr>
+	<tr>
+		<td><img height="20" width="20" class="sprite folder-edit" src="/images/transparent.png"></td>
+		<td>Drafts</td>
+		<td>0</td>
+	</tr>
+	<tr>
+		<td><img height="20" width="20" class="sprite trash" src="/images/transparent.png"></td>
+		<td>Trash</td>
+		<td>0</td>
+	</tr>
+</table>

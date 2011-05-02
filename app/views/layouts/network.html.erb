@@ -13,15 +13,26 @@
 		<div class="container">
 			<%= render 'layouts/header' %>
 			
-			<div style="margin:10px 0 -7px 10px">
-				<span id="network-tab" class="round2 selected" style="margin-left:10px"><%= @network.name %></span>
-				<span id="network-tab" class="round2"><a href="#">All Content</a></span>
-				<span id="network-tab" class="round2"><a href="#">Discussions</a></span>
-				<span id="network-tab" class="round2"><a href="#">Documents</a></span>
-				<span id="network-tab" class="round2"><a href="#">Media</a></span>
+			<div style="margin:10px 0 0px 10px">
+<%
+		@tabs.each do |t|
+%>
+		<div id="network-tab" class="round2 <%=params[:tab]==t ? "selected" : "" %>">
+		<%
+			if params[:tab] == t %>
+			<%=t%>
+<%
+			else %>
+				<%=link_to t, :tab => t %>
+	<%	
+			end%></div>
+		
+<%	
+		end %>
+			<div style="clear:both"></div>
 			</div>
-	    <div id="network-content" style="margin-top: 5px">
 			
+	    <div id="network-content">
 					<% flash.each do |key, value| %>
 			    	<%= content_tag(:div, value, :class => "flash #{key}") %>
 					<% end %>

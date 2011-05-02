@@ -1,0 +1,9 @@
+<h2>Add New Photo</h2>
+<% @photo_add = current_user.photos.new(:network_id => @network.id) %>
+<% form_for :photo_add, :html => {:multipart => true} do |f| %>
+  <%= f.error_messages %>
+	<%= f.hidden_field :network_id %>
+	<%= f.hidden_field :user_id %>
+  <%= f.file_field :photo %><br/><br/><br/>
+  <%= f.submit "Submit" %>
+<% end %>

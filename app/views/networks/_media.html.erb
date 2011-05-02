@@ -1,0 +1,65 @@
+<div id="network-view">
+	<h3><%=params[:tab]%></h3>		
+	<ul>
+		<li>			<%= link_to "All Media", :tab => params[:tab] %></li>
+		<li><%= link_to '<span><img height="20" width="20" class="sprite photo" src="/images/transparent.png"></span>
+				Add Video', :tab => "Media", :photo => "add" %></li>
+			<li>
+			<%= link_to '<span><img height="20" width="20" class="sprite video" src="/images/transparent.png"></span>
+				Add Video', :tab => "Media", :video => "add" %>
+	</ul>
+</div>
+
+
+
+
+<div id="network-view-main" style="width:688px">
+<%
+		@t = ["summary", "photo", "video"]
+		if !params[:video] and !params[:photo]
+			params[:summary] = "index"
+		end
+		@t.each do |t|
+%>
+		<div id="network-tab" class="round2 <%=params[t] ? "selected2" : "" %>">
+		<%
+			if params[t] == "index" %>
+			<%=t%>
+<%
+			else %>
+				<%=link_to t, :tab => params[:tab],t => "index" %>
+	<%	
+			end%></div>
+		
+<%	
+		end %>
+	<div style="clear:both"></div>
+<div class="media-body">
+<% if params[:video] %>
+	<%	case params[:video] when "add" %>
+		<%=render "videos/new" -%>
+	<%	when "show" %>
+		<%=render "videos/show" %>
+	<%	when "index" %>
+		<%=render "videos/index" %>
+	<%	else %>
+	<h4>Recent Media</h4>
+		<%=render "videos/index" -%>
+	<%	end
+elsif params[:photo] %>
+<%	case params[:photo] when "add" %>
+	<%=render "photos/new" -%>
+<%	when "show" %>
+		<%=render "photos/show" %>
+<%	when "index" %>
+		<%=render "photos/index" %>
+<% end
+else %>
+		<%=render "videos/index" -%>
+		<%=render "photos/index" -%>
+<%
+end%>
+</div>
+</div>
+<div style="clear:both"></div>
+

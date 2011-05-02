@@ -6,7 +6,6 @@ body
 }
 a
 {
-	color: #000;
 	text-decoration: none;
 	float:none
 }
@@ -150,19 +149,24 @@ a:hover
 	padding: 15px;
 	/border: 5px solid #000;
 }
+#network-tab:first
+{
+	margin-left: 10px;
+}
 #network-tab
 {
 	background-color:white; 
 	border-top: 5px solid #000;
-
-
+	border-bottom: 1px solid #000;
+	float:left;
 	font-size: 14px;
 	background-color:black;
+	margin-left: 5px;
 }
 #network-tab a
 {
 	color: #00D8A8;
-	padding: 5px 8px 4px;
+	padding: 5px 8px 4px !important;
 }
 #network-tab a:hover
 {
@@ -170,24 +174,32 @@ a:hover
 }
 .selected
 {
-	border-bottom: 5px solid #fff;
+	border-bottom: 1px solid #fff !important;
 	font-weight:bold;
 	background-color:white !important;
 	color: black !important;
 	border-top: 5px solid #fff !important;
 	border-left: 5px solid #fff;
 	border-right: 5px solid #fff;
-	padding:1px 5px 0px; 
+}
+.selected2
+{
+	border-bottom: 1px solid #fff !important;
+	background-color:white !important;
+	color: black !important;
+	border-top: 1px solid #000 !important;
+	border-left: 1px solid #000;
+	border-right: 1px solid #000;
+	padding: 4px 8px 0px !important;
 }
 #network-content
 {
 	background: white;
-	margin-top: 20px;
 	-moz-border-radius:    5px 5px 5px 5px;
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius:         5px 5px 5px 5px;
 	padding: 15px;
-	/*border: 5px solid #000;*/
+	clear: both;
 }
 /*******************ERROR HANDLING**********************/
 .fieldWithErrors {
@@ -272,6 +284,29 @@ a:hover
 {
 	padding: 10px 0 0;
 	font-size: 9px;
+}
+/******EMAIL*****/
+.email-menu
+{
+	border: 1px solid #e3e3e3;
+	padding: 5px;
+	-moz-border-radius:    5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius:         5px 5px 5px 5px;
+	margin-bottom: 1px !important;
+	border-spacing: 5px !important;
+}
+.email-menu tr
+{
+
+}
+.email-menu tr td
+{
+	padding: 0;
+}
+.email-input
+{
+	width: 80%;
 }
 /******************************************************/
 /***************************MAIN BODY******************/
@@ -378,7 +413,6 @@ a:hover
 {
 	display: block;
 	margin: 0;
-	border: 1px solid #e3e3e3;
 	width: 458px;
 	float:left;
 	font-size: 8pt;
@@ -400,6 +434,19 @@ a:hover
 .network-members a img
 {
 	margin-right: 5px;
+	-moz-border-radius:    5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius:         5px 5px 5px 5px;
+}
+.media-body
+{
+	border: 1px solid black; 
+	margin-top:-1px; 
+	padding:20px;
+	-moz-border-radius:    5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius:         5px 5px 5px 5px;
+
 }
 
 /**************************END NETWORK VIEW******************/

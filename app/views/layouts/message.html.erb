@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title><%= title %></title>
+	<%= render 'layouts/stylesheets' %>
+	<%= javascript_include_tag 'jquery', 'application' %>
+  </head>
+  <body>
+		<% if @user = current_user %>
+			<%= render( 'users/controls') %>
+		<% end %>
+		<div class="container" class="round">
+			<%= render 'layouts/header' %>
+	    <div id="content" class="round">
+				<div id="menu">
+					<%=render 'message_systems/menu' %>
+				</div>
+				<div id="body">
+					<% flash.each do |key, value| %>
+			    	<%= content_tag(:div, value, :class => "flash #{key}" ) %>
+					<% end %>
+					<%= yield %>
+				</div>
+				<div style="clear:both"></div>
+    	</div>
+			<div style="clear:both"></div>
+			<%= render 'layouts/footer' %>
+			<%= debug(params) if Rails.env.development? %>
+		</div>
+<img height="20" width="20" class="sprite discussion" src="/images/transparent.png">
+<img height="20" width="20" class="sprite question" src="/images/transparent.png">
+<img height="20" width="20" class="sprite article" src="/images/transparent.png">
+<img height="20" width="20" class="sprite blog" src="/images/transparent.png">
+<img height="20" width="20" class="sprite poll" src="/images/transparent.png">
+<img height="20" width="20" class="sprite email" src="/images/transparent.png">
+<img height="20" width="20" class="sprite inbox" src="/images/transparent.png">
+<img height="20" width="20" class="sprite folder-sent" src="/images/transparent.png">
+<img height="20" width="20" class="sprite folder-edit" src="/images/transparent.png">
+<img height="20" width="20" class="sprite trash" src="/images/transparent.png">
+<img height="20" width="20" class="sprite message" src="/images/transparent.png">
+<img height="20" width="20" class="sprite message-add" src="/images/transparent.png">
+<img height="20" width="20" class="sprite message-new" src="/images/transparent.png">
+  </body>
+</html>

@@ -29,6 +29,33 @@
 {
 	background-position:-656px -849px;;
 }
+.inbox {
+background-position: -144px -848px;
+}
+
+.folder-sent {
+background-position: -912px -848px;
+}
+
+.folder-edit {
+background-position: -1040px -848px;
+}
+
+.trash {
+background-position: -1232px -848px;
+}
+
+.message-new {
+background-position: -80px -849px;
+}
+
+.message {
+background-position: -16px -848px;
+}
+
+.message-add {
+background-position: -592px -848px;
+}
 .pdf
 {
 	background-position:-80px -80px;

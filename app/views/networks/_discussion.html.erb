@@ -1,0 +1,14 @@
+<div id="network-view">
+	<h3><%=params[:tab]%></h3>
+		
+</div>
+<div id="network-view-main">
+<h4>Recent Content</h4>
+<% m = @network %>
+<%= render 'networks/microposts' %>
+</div>
+<div id="network-view-s">
+	<h3>EMPTY</h3>
+</div>
+<div style="clear:both"></div>
+

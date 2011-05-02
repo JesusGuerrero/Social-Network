@@ -1,0 +1,35 @@
+<% if params[:sent] %>
+	<% user = User.find(@message[:receiver_id] ) 
+		from = current_user.name
+		to = user.name
+	else %>
+<div style="float:right">
+<% form_tag('/messages/new') do -%>
+		<%=hidden_field_tag 'send_to', @message[:user_id] %>
+		<%=hidden_field_tag 'subject', @message[:subject] %>
+		<%= submit_tag 'Reply' %>
+ 	<% end -%>
+</div>
+<%
+	 user = User.find(@message[:user_id] ) 
+		from = user.name
+		to = current_user.name
+	 end %>
+<h3><%=@message[:subject]%></h3>
+<table>
+	<tr>
+		<td width="50"><b>From:</b></td><td><%=from%></td>
+	</tr>
+	<tr>
+		<td width="50"><b>To:</b></td><td><%=to%></td>
+	</tr>
+	<tr>
+		<td><b>Subject:</b></td><td><%=@message[:subject]%></td>
+	</tr>
+	<tr>
+		<td><b>Received:</b></td><td><%=@message[:created_at]%></td>
+	</tr>
+</table>
+<div style="border:1px solid #666; padding: 20px; clear:none" id="network-content">
+<%=@message[:body]%>
+</div>

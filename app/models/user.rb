@@ -36,8 +36,8 @@ class User < ActiveRecord::Base
 										:access_key_id => ENV['S3_KEY'],
 										:secret_access_key => ENV['S3_SECRET']
 									},
-                  :url  => "/images/users/:id/:style/:basename.:extension",
-                  :path => "/images/users/:id/:style/:basename.:extension"
+                  :url  => "/images/users/:id/profile/:style/:basename.:extension",
+                  :path => "/images/users/:id/profile/:style/:basename.:extension"
 
 	#validates_attachment_presence :photo
 	#validates_attachment_size :photo, :less_than => 5.megabytes
@@ -62,6 +62,8 @@ class User < ActiveRecord::Base
 
 	has_many :microposts
 	has_many :chats
+	has_many :videos
+	has_many :photos
 
 	def add_networks( network )
 		memberships.create!(:network_id => network )

@@ -16,6 +16,20 @@ class NetworksController < ApplicationController
 			redirect_to root_path
 		else
 			@microposts = Micropost.find_all_by_network_id( @network.id )
+			@tabs = [@network.name, "All Content", "Discussions", "Documents", "Media"]
+			if params[:video_add]
+				@video = current_user.videos.create!(params[:video_add])
+				@video.save
+				params[:tab] = "Media"
+			end
+			if params[:photo_add]
+				@photo = current_user.photos.create!(params[:photo_add])
+				@photo.save
+				params[:tab] = "Media"
+			end
+			if !params[:tab] or !@tabs.include?(params[:tab])
+				params[:tab] = @tabs[0]
+			end
 	    respond_to do |format|
   	    format.html { render :layout => "network" }# show.html.erb
   	    format.xml  { render :xml => @network, :layout => "user_session" }

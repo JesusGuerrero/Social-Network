@@ -10,7 +10,7 @@
   <tr>
     <td><%=h network.name %></td>
     <td><%=h network.description %></td>
-    <td><%= link_to 'Show', network %></td>
+    <td><%= link_to 'Show', :action=> "show", :name => network.name %></td>
     <td><%= link_to 'Edit', edit_network_path(network) %></td>
     <td><%= link_to 'Destroy', network, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

@@ -1,0 +1,24 @@
+<h2>Photos</h2>
+<%= link_to "Add Photo", :tab => params[:tab], :photo => "add" %>
+<div style="border:1px solid #e3e3e3">
+<table>
+	<tr>
+		<th>Thumbnail</th>
+		<th>Filename</th>
+		<th>Created</th>
+		<th>Created By</th>
+	</tr>
+<%@network.photos.each do |p| %>
+<tr>
+	<td><%=image_tag p.photo.url(:small)%></td>
+	<td><%=p.photo_file_name%></td>
+	<td><%=p.created_at%></td>
+<% @user = User.find( p.user_id )%>
+	<td><%=@user.name%></td>
+	<td><%= link_to "View", :name => @network.name,  :tab => params[:tab], :photo => "show", :p_id => p.id %></td>
+<%	if @user.id == current_user.id %>
+	<td><%=link_to "Destroy", :controller => "photos", :action => "destroy", :id => p.id, :name => @network.name  %></td>
+<% 	end %>
+<%end%>
+</table>
+</div>

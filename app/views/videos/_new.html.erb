@@ -1,0 +1,12 @@
+<h2>Add New Video</h2>
+<% @video_add = current_user.videos.new(:network_id => @network.id) %>
+<% form_for :video_add do |f| %>
+  <%= f.error_messages %>
+	<%= f.hidden_field :network_id %>
+	<%= f.hidden_field :user_id %>
+  <%= f.label :title %><br />
+	<%= f.text_field :title %><br />
+  <%= f.label :code %><br />
+	<%= f.text_field :code %><br />
+  <%= f.submit "Submit" %>
+<% end %>

@@ -1,17 +1,64 @@
-<h1>Message</h1>
-<h2>Inbox</h2>
-<% @inbox.each do |m| %>
-	Subject: <%=m.subject%><br/>
-	Body: <%=m.body%><br/>
-	<% form_tag('/messages/new') do -%>
-		<%=hidden_field_tag 'send_to', m.user_id %>
-		<%= submit_tag 'Reply' %>
- 	<% end -%>
-	<br/>
-<% end %>
-<h2>Sent</h2>
+<% if params[:sent] %>
+	<h3>Sent Messages</h3>
+	<table style="border:1px solid #e3e3e3;clear:none" id="network-content">
+	<tr bgcolor="#e3e3e3">
+		<th>Subject</th>
+		<th>To</th>
+		<th>Date</th>
+		<th>&nbsp;</th>
+	</tr>
+<% if @sent.count == 0 %>
+	<tr>
+		<td colspan="5" style="text-align:center">No Messages</td>
+	</tr>
+<%	end%>
 <% @sent.each do |m| %>
-	Subject: <%=m.subject%><br/>
-	Body: <%=m.body%><br/>
-	<br/>
+<% user = User.find(m.receiver_id ) %>
+	<tr>
+		<td><%=m.subject%></td>
+		<td><%=user.name%></td>
+		<td><%=m.created_at%></td>
+		<td>
+	<% form_tag('/messages/show?sent=true') do -%>
+		<%=hidden_field_tag 'id', m.id %>
+		<%= submit_tag 'View' %>
+ 	<% end -%></td>
+	</tr>
 <% end %>
+</table>
+<% else %>
+	<h3>Inbox Messages</h3>
+<table style="border:1px solid #e3e3e3; clear:none" id="network-content">
+	<tr bgcolor="#e3e3e3">
+		<th>Subject</th>
+		<th>From</th>
+		<th>Date</th>
+		<th>&nbsp;</th>
+		<th>&nbsp;</th>
+	</tr>
+<% if @inbox.count == 0 %>
+	<tr>
+		<td colspan="5" style="text-align:center">No Messages</td>
+	</tr>
+<%	end%>
+<% @inbox.each do |m| %>
+<% user = User.find(m.user_id ) %>
+	<tr>
+		<td><%=m.subject%></td>
+		<td><%=user.name%></td>
+		<td><%=m.created_at%></td>
+		<td>
+	<% form_tag('/messages/show') do -%>
+		<%=hidden_field_tag 'id', m.id %>
+		<%= submit_tag 'View' %>
+ 	<% end -%></td>
+	<td>	<% form_tag('/messages/new') do -%>
+		<%=hidden_field_tag 'send_to', m.user_id %>
+		<%=hidden_field_tag 'subject', m.subject %>
+		<%= submit_tag 'Reply' %>
+ 	<% end -%></td>
+	</tr>
+<% end %>
+</table>
+<% end%>
+

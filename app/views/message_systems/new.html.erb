@@ -1,13 +1,40 @@
-<h1>Send Message</h1>
+<div style="padding:5px; background-color:#efefef;"><h3>New Message</h3>
+
 
 <% form_for @message do |f| %>
-	<%= f.hidden_field :receiver_id %>
 	<%= f.hidden_field :user_id %>
+	<label >To:</label> 
+<% if @message[:receiver_id] %>
+	<% user = User.find( @message[:receiver_id] ) %>
+	<%= user.name%>
+	<%= f.hidden_field :receiver_id %>	
+<br/>
+<% else %>
+	<% @members = current_user.networks
+		@users = Array.new
+		@members.each do  |m|
+			m.users.each do |u|
+				unless @users.include?( u )
+					@users.push u
+				end
+			end
+		end %>
+	<select name="message_system[receiver_id]">
+		<% 	@users.each do |m| 
+				if m.id != current_user.id %>
+					<option value="<%=h m.id %>"><%=h m.name %></option>
+		<%	end 
+			end %>
+	</select>
+	<br/>
+<% end%>
+<br/>
   <%= f.label :subject %><br />
-	<%= f.text_field :subject %><br />
+	<%= f.text_field :subject, :class => "email-input" %><br />
 	<br />
 	<%= f.label :body %><br />
-	<%= f.text_field :body %><br />
+	<%= f.text_area :body, :class => "email-input" %><br />
 	<br />
   <%= f.submit "Send" %>
 <% end %>
+</div>
