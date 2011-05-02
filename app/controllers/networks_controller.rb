@@ -16,7 +16,7 @@ class NetworksController < ApplicationController
 			redirect_to root_path
 		else
 			@microposts = Micropost.find_all_by_network_id( @network.id )
-			@tabs = [@network.name, "All Content", "Discussions", "Documents", "Media"]
+			@tabs = [@network.name, "All Content", "Chat Room", "Discussions", "Documents", "Media"]
 			if params[:video_add]
 				@video = current_user.videos.create!(params[:video_add])
 				@video.save

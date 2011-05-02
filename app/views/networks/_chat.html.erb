@@ -1,0 +1,23 @@
+<div id="network-view-main" style="width:685px">
+<div style="text-align:center; font-size: 18px">Chat Room: <%=@network.name%></div>
+<div id="resources">
+
+</div>
+
+<div id="clearForm"><%= render 'chats/add_message' %></div>
+
+<% form_remote_tag :url => { :controller => 'chats', :action => 'add_message' } do %>
+<%=text_field_tag "content", nil, :id => "chatbox", :style=>"width:100%; font-size:18px; margin:10px 0" %>
+<%= submit_tag "SEND", :style => "float:right; padding:10px; font-size:18px" %>
+<% end %>
+
+
+
+
+</div>
+<div id="network-view-s">
+	<h3>Network Members</h3>
+		<%= render 'users/user' %>
+</div>
+<div style="clear:both"></div>
+

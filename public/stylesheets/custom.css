@@ -448,7 +448,14 @@ a:hover
   border-radius:         5px 5px 5px 5px;
 
 }
-
+/*************NETWORK CHAT***********************/
+#resources
+{
+	padding: 10px;
+	border: 1px solid #e3e3e3;
+	height:300px;
+	overflow: auto;
+}
 /**************************END NETWORK VIEW******************/
 /**************************FRIENDS******************/
 #chose-members

@@ -35,16 +35,6 @@
 	    <div id="content" class="round">
 				<div id="menu">
 					<%= render 'users/user_info' %>
-					<div id="resources">
-					<%= render 'chats/add_message' %>
-					
-
-					</div>
-					<div id="clearForm"></div>
-<% form_remote_tag :url => { :controller => 'chats', :action => 'add_message' } do %>
-<%=text_field_tag "content", nil, :id => "chatbox" %>
-<%= submit_tag "SEND" %>
-<% end %>
 				</div>
 				<div id="body">
 					<% flash.each do |key, value| %>

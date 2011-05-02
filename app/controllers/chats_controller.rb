@@ -59,7 +59,7 @@ class ChatsController < ApplicationController
 		Pusher.app_id = ENV['P_ID']
 		Pusher.key = ENV['P_KEY'] 	
 		Pusher.secret = ENV['P_SECRET']
-		Pusher['test_channel'].trigger('my_event', {:name=>@user.name, :time =>Time.now, :text => params[:content].to_s })
+		Pusher['test_channel'].trigger('my_event', {:name=>@user.name, :time =>Time.now.strftime( "(%m/%d/%Y %I:%M%p)"), :text => params[:content].to_s })
     respond_to do |format|
         format.js
     end
